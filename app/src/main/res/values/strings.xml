@@ -8,6 +8,36 @@
     <string name="title_search">검색</string>
     <string name="title_channel">채널</string>
     <string name="title_my_page">My Page</string>
+
+    <string name="month">month</string>
+    <string name="week">week</string>
+
+    <!-- MONTH -->
+    <string name="January">1월</string>
+    <string name="February">2월</string>
+    <string name="March">3월</string>
+    <string name="April">4월</string>
+    <string name="May">5월</string>
+    <string name="June">6월</string>
+    <string name="July">7월</string>
+    <string name="August">8월</string>
+    <string name="September">9월</string>
+    <string name="October">10월</string>
+    <string name="November">11월</string>
+    <string name="December">12월</string>
+
+    <!-- DAY -->
+    <string name="monday">월</string>
+    <string name="tuesday">화</string>
+    <string name="wednesday">수</string>
+    <string name="thursday">목</string>
+    <string name="friday">금</string>
+    <string name="saturday">토</string>
+    <string name="sunday">일</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- Schedules Fragment -->
+    <string name="filter_setting">필터 설정</string>
+
 </resources>

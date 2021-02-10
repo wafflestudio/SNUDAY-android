@@ -7,4 +7,16 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+
+    <!-- Schedule -->
+    <color name="tag_filter">#FFB8B8B8</color>
+    <color name="switch_blue">#FF3B77FF</color>
+
+    <color name="waffle_red">#FFD4515D</color>
+    <color name="waffle_orange">#FFE8914F</color>
+    <color name="waffle_yellow">#FFF3C550</color>
+    <color name="waffle_yellow_green">#FFB2D652</color>
+    <color name="waffle_green">#FF60BF70</color>
+
 </resources>
