@@ -17,12 +17,14 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
+            android:id="@+id/text_month_show"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            tools:text="@string/January"
             android:text="@string/January"
-            android:textSize="25sp"/>
+            android:textSize="25dp"
+            android:textStyle="bold"
+            tools:text="@string/January" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -36,7 +38,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/month"
-                android:textSize="13sp"/>
+                android:textSize="13dp"/>
 
             <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/switch_month_week"
@@ -54,7 +56,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/week"
-                android:textSize="13sp"/>
+                android:textSize="13dp"/>
 
         </LinearLayout>
 
@@ -79,6 +81,7 @@
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view_tags"
         app:layout_constraintTop_toBottomOf="@id/app_bar_schedule"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -87,7 +90,20 @@
         android:orientation="horizontal"
         tools:orientation="horizontal"
         tools:listitem="@layout/item_tag"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:clipToPadding="false"
         />
+
+    <com.wafflestudio.snuday.views.CustomCalendarView
+        android:id="@+id/custom_calendar_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/recycler_view_tags"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+
 
 
 

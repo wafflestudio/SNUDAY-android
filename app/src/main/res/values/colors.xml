@@ -13,10 +13,20 @@
     <color name="tag_filter">#FFB8B8B8</color>
     <color name="switch_blue">#FF3B77FF</color>
 
+    <color name="sunday_red">#FFD94B4B</color>
+    <color name="saturday_blue">#FF3C69E3</color>
+    <color name="date_black">#FF6A6A6A</color>
+
+    <color name="sunday_red_opaque">#66D94B4B</color>
+    <color name="saturday_blue_opaque">#663C69E3</color>
+    <color name="date_black_opaque">#666A6A6A</color>
+
     <color name="waffle_red">#FFD4515D</color>
     <color name="waffle_orange">#FFE8914F</color>
     <color name="waffle_yellow">#FFF3C550</color>
     <color name="waffle_yellow_green">#FFB2D652</color>
     <color name="waffle_green">#FF60BF70</color>
+
+    <color name="div_line">#FFDDDDDD</color>
 
 </resources>

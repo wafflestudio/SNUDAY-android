@@ -15,10 +15,9 @@ import com.wafflestudio.snuday.ui.main.schedule.ScheduleFragment
 import com.wafflestudio.snuday.ui.main.search.SearchFragment
 import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var bottomNavigationView: BottomNavigationView
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,14 +25,13 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        bottomNavigationView = binding.bottomNavView
 
         supportFragmentManager.commit {
             setReorderingAllowed(true)
             add<ScheduleFragment>(R.id.nav_host_fragment)
         }
 
-        bottomNavigationView.setOnNavigationItemSelectedListener {
+        binding.bottomNavView.setOnNavigationItemSelectedListener {
             when(it.itemId) {
                 R.id.navigation_my_schedules -> {
                     supportFragmentManager.commit {
@@ -65,7 +63,6 @@ class MainActivity : AppCompatActivity() {
                         setReorderingAllowed(true)
                     }
                 }
-                else -> null
             }
             return@setOnNavigationItemSelectedListener true
         }
