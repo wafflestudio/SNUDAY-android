@@ -17,10 +17,19 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/text_month_show"
+            android:id="@+id/text_year_show"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
+            tools:text="2020"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/text_month_show"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
             android:text="@string/January"
             android:textSize="25dp"
             android:textStyle="bold"
@@ -31,7 +40,7 @@
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:layout_marginStart="40dp">
+            android:layout_marginStart="15dp">
 
             <TextView
                 android:id="@+id/text_month"
@@ -75,14 +84,23 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/filter_setting"/>
+                android:text="@string/filter_setting" />
         </LinearLayout>
 
     </LinearLayout>
 
+    <View
+        android:id="@+id/div_line"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        app:layout_constraintTop_toBottomOf="@id/app_bar_schedule"
+        android:background="@color/div_line"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_tags"
-        app:layout_constraintTop_toBottomOf="@id/app_bar_schedule"
+        app:layout_constraintTop_toBottomOf="@id/div_line"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/tag_filter"
