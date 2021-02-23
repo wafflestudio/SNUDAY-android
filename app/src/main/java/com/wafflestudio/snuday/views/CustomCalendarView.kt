@@ -7,9 +7,11 @@ import android.os.Build
 import android.util.AttributeSet
 import android.util.Log
 import android.util.TypedValue
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Space
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -135,6 +137,8 @@ class CustomCalendarView : ConstraintLayout {
 
     class CustomCalendarViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val context = view.context
+        private var height: Int
+        private var width: Int
         private val layout = view.layout_week
 
         private val days: List<View> = listOf(
@@ -148,6 +152,12 @@ class CustomCalendarView : ConstraintLayout {
         )
 
         private val eventMap: Array<Array<Boolean>> = Array(5) {Array(7) { false } }
+
+        init {
+            view.measure(MeasureSpec.UNSPECIFIED, MeasureSpec.UNSPECIFIED)
+            this.height = view.measuredHeight
+            this.width = view.measuredWidth
+        }
 
         fun render(weekData: Array<Int>, weekInfo: Int, date: Date, events: List<EventDto>) {
             val startDay = weekData[0]
@@ -237,6 +247,7 @@ class CustomCalendarView : ConstraintLayout {
             endDate.set(Calendar.DATE, endDay)
             if(weekInfo == WEEK_LAST && endDay < 7) endDate.add(Calendar.MONTH, 1)
 
+
             events.forEach {
                 val eventStartDate = it.startDate
                 val eventEndDate = it.dueDate
@@ -257,6 +268,7 @@ class CustomCalendarView : ConstraintLayout {
 
 
 
+
                 Timber.d("${it.contents} : start = ${startDayOfWeek}, end = ${endDayOfWeek}")
 
                 eventLoop@ for (i in 0..4) {
@@ -268,40 +280,16 @@ class CustomCalendarView : ConstraintLayout {
                         eventMap[i][j] = true
                     }
 
-                    val par = LayoutParams(0, context.resources.getDimensionPixelSize(R.dimen.event_height))
-                    var width = 0
-                    val eventView = TextView(context)
-                    eventView.id = View.generateViewId()
-                    eventView.text = it.contents
-                    days[startDayOfWeek].doOnLayout {
-                        eventView.x = it.x
-                        eventView.y = when(i) {
-                            0 -> context.resources.getDimensionPixelSize(R.dimen.first_line_event_margin).toFloat()
-                            1 -> context.resources.getDimensionPixelSize(R.dimen.second_line_event_margin).toFloat()
-                            2 -> context.resources.getDimensionPixelSize(R.dimen.third_line_event_margin).toFloat()
-                            3 -> context.resources.getDimensionPixelSize(R.dimen.fourth_line_event_margin).toFloat()
-                            4 -> context.resources.getDimensionPixelSize(R.dimen.fifth_line_event_margin).toFloat()
-                            else -> 0F
-                        }
-                        width = ((endDayOfWeek - startDayOfWeek + 1) * it.width)
-                        Timber.d("width = ${((endDayOfWeek - startDayOfWeek + 1) * it.width)} x = ${eventView.x}")
+                    val eventView = EventView(context)
+                    eventView.apply {
+                        this.text = it.contents
+                        this.background = ContextCompat.getDrawable(context, R.drawable.event_round)
+                        this.startDayOfWeek = startDayOfWeek
+                        this.endDayOfWeek = endDayOfWeek
+                        this.line = i
                     }
-                    eventView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13F)
-                    eventView.setTextColor(ContextCompat.getColor(context, R.color.white))
-                    eventView.maxLines = 1
-                    val eventDrawable = ContextCompat.getDrawable(context, R.drawable.event_round)
-                    val wrapDrawable = eventDrawable?.let { DrawableCompat.wrap(it) }
-                    if (wrapDrawable != null) {
-                        wrapDrawable.setTint(ContextCompat.getColor(context, R.color.waffle_red))
-                        eventView.background = wrapDrawable
-                        eventView.layoutParams = par
-                        layout.addView(eventView)
-                        eventView.doOnLayout {
-                            eventView.layoutParams.apply {
-                                this.width = (endDayOfWeek - startDayOfWeek + 1) * width
-                            }
-                        }
-                    }
+                    layout.addView(eventView)
+
                     break@eventLoop
                 }
             }

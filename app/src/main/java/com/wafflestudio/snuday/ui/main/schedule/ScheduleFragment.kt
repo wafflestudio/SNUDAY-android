@@ -44,10 +44,12 @@ class ScheduleFragment : Fragment() {
         binding.recyclerViewTags.adapter = tagAdapter
         binding.recyclerViewTags.layoutManager = tagLayoutManager
 
-        binding.customCalendarView.setDatesToCalendar(Calendar.getInstance().time)
-        binding.textYearShow.text = SimpleDateFormat("yyyy").format(Calendar.getInstance().time)
+        val cc = Calendar.getInstance()
+
+        binding.customCalendarView.setDatesToCalendar(cc.time)
+        binding.textYearShow.text = SimpleDateFormat("yyyy").format(cc.time)
         binding.textMonthShow.text = getString(
-            when(SimpleDateFormat("MM").format(Calendar.getInstance().time).toInt()) {
+            when(SimpleDateFormat("MM").format(cc.time).toInt()) {
                 1 -> R.string.January
                 2 -> R.string.February
                 3 -> R.string.March
@@ -72,6 +74,11 @@ class ScheduleFragment : Fragment() {
         c.set(2021, Calendar.FEBRUARY, 9)
         val d = Calendar.getInstance()
         d.set(2021, Calendar.FEBRUARY, 19)
+        val e = Calendar.getInstance()
+        e.set(2021, Calendar.FEBRUARY, 8)
+        val f = Calendar.getInstance()
+        f.set(2021, Calendar.FEBRUARY, 10)
+
 
 
 
@@ -79,7 +86,7 @@ class ScheduleFragment : Fragment() {
             id = 1,
             user_id = 1,
             channel_id = 1,
-            contents = "abc",
+            contents = "abcdefghijklmnopqrstuvwxyz",
             startDate = a.time,
             dueDate = b.time
         )
@@ -102,7 +109,18 @@ class ScheduleFragment : Fragment() {
             dueDate = d.time
         )
 
-        binding.customCalendarView.bindEvents(listOf(event1, event2, event3))
+        val event4 = EventDto(
+            id = 4,
+            user_id = 1,
+            channel_id = 1,
+            contents = "와플스튜디오 와플스튜디오 와플스튜디오",
+            startDate = e.time,
+            dueDate = f.time
+        )
+
+
+
+        binding.customCalendarView.bindEvents(listOf(event1, event2, event3, event4))
     }
 
 }
