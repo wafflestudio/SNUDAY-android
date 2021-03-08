@@ -4,29 +4,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="15dp"
-    android:background="@drawable/event_round"
-    tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout"
+    android:layout_height="match_parent"
+    tools:parentTag="android.widget.FrameLayout"
     android:id="@+id/layout_event"
     >
 
     <TextView
+        android:background="@drawable/event_round"
         android:id="@+id/text_event"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="15dp"
         android:textColor="@color/white"
         android:textSize="9dp"
         android:gravity="center"
         android:lineSpacingExtra="4dp"
         tools:text="Example Event"
         />
-
-
-
-
 
 </merge>

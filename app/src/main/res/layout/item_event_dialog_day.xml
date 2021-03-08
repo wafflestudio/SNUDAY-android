@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp">
+
+    <View
+        android:id="@+id/circle_color"
+        android:layout_width="14dp"
+        android:layout_height="14dp"
+        android:background="@drawable/dialog_calendar_day_item_color"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="4dp"/>
+    
+    <TextView
+        android:id="@+id/text_content"
+        android:layout_width="204dp"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        android:lineSpacingExtra="2dp"
+        tools:text="2021학년도 제1학기 복학(귀) 신청"
+        app:layout_constraintStart_toEndOf="@+id/circle_color"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="13dp"
+        />
+
+    <TextView
+        android:id="@+id/text_datetime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/text_content"
+        app:layout_constraintTop_toBottomOf="@+id/text_content"
+        android:textSize="9dp"
+        android:lineSpacingExtra="4dp"
+        tools:text="12월 14일 (월) ~ 1월 15일 (금)"
+        />
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -37,23 +37,23 @@ class EventView : androidx.appcompat.widget.AppCompatTextView {
 
     constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr)
 
-    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec)
-        basicWidth = MeasureSpec.getSize(widthMeasureSpec) / 7
-        mWidth = (MeasureSpec.getSize(widthMeasureSpec) / 7) * (endDayOfWeek - startDayOfWeek + 1)
-        mHeight = MeasureSpec.getSize(heightMeasureSpec)
-
-        Timber.d("mWidth ${mWidth}, mHeight ${mHeight}")
-    }
-
-    override fun layout(l: Int, t: Int, r: Int, b: Int) {
-        super.layout(
-            l + basicWidth * startDayOfWeek,
-            t + getLineSize(line),
-            l + basicWidth * startDayOfWeek + mWidth,
-            b + getLineSize(line)
-        )
-    }
+//    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
+//        super.onMeasure(widthMeasureSpec, heightMeasureSpec)
+//        basicWidth = MeasureSpec.getSize(widthMeasureSpec) / 7
+//        mWidth = (MeasureSpec.getSize(widthMeasureSpec) / 7) * (endDayOfWeek - startDayOfWeek + 1)
+//        mHeight = MeasureSpec.getSize(heightMeasureSpec)
+//
+//        Timber.d("mWidth ${mWidth}, mHeight ${mHeight}")
+//    }
+//
+//    override fun layout(l: Int, t: Int, r: Int, b: Int) {
+//        super.layout(
+//            l,
+//            t + getLineSize(line),
+//            r,
+//            b + getLineSize(line)
+//        )
+//    }
 
     private fun getLineSize(line: Int): Int {
         return when (line) {

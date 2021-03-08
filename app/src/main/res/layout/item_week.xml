@@ -61,6 +61,12 @@
             />
     </LinearLayout>
 
+    <com.wafflestudio.snuday.views.EventContainerView
+        android:id="@+id/event_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
     <View
         android:id="@+id/div_line"
         android:layout_width="0dp"

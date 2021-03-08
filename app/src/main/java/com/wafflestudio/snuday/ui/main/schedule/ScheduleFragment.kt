@@ -45,6 +45,7 @@ class ScheduleFragment : Fragment() {
         binding.recyclerViewTags.layoutManager = tagLayoutManager
 
         val cc = Calendar.getInstance()
+        cc.add(Calendar.MONTH, -1)
 
         binding.customCalendarView.setDatesToCalendar(cc.time)
         binding.textYearShow.text = SimpleDateFormat("yyyy").format(cc.time)

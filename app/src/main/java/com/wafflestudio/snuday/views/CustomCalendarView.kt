@@ -11,6 +11,7 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
 import android.widget.Space
 import android.widget.TextView
 import androidx.annotation.RequiresApi
@@ -55,6 +56,8 @@ class CustomCalendarView : ConstraintLayout {
     }
 
     fun setDatesToCalendar(dateData: Date) {
+
+        Timber.d("custom calendar width ${this.width}")
 
         this.date = dateData
 
@@ -115,10 +118,12 @@ class CustomCalendarView : ConstraintLayout {
         override fun onCreateViewHolder(
             parent: ViewGroup,
             viewType: Int
-        ): CustomCalendarViewHolder =
-            LayoutInflater.from(parent.context)
+        ): CustomCalendarViewHolder {
+            Timber.d("CreateViewHolder ${parent.measuredWidth}")
+            return LayoutInflater.from(parent.context)
                 .inflate(R.layout.item_week, parent, false)
-                .let { CustomCalendarViewHolder(it) }
+                .let { CustomCalendarViewHolder(it, parent.measuredWidth) }
+        }
 
         override fun getItemCount() = dates.size
 
@@ -135,11 +140,11 @@ class CustomCalendarView : ConstraintLayout {
         }
     }
 
-    class CustomCalendarViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    class CustomCalendarViewHolder(view: View, parentWidth: Int) : RecyclerView.ViewHolder(view) {
         private val context = view.context
-        private var height: Int
-        private var width: Int
         private val layout = view.layout_week
+        private val eventLayout = view.event_container
+        private val parentWidth = parentWidth / 7
 
         private val days: List<View> = listOf(
             view.day_1,
@@ -151,15 +156,24 @@ class CustomCalendarView : ConstraintLayout {
             view.day_7
         )
 
-        private val eventMap: Array<Array<Boolean>> = Array(5) {Array(7) { false } }
-
         init {
-            view.measure(MeasureSpec.UNSPECIFIED, MeasureSpec.UNSPECIFIED)
-            this.height = view.measuredHeight
-            this.width = view.measuredWidth
+
+            layout.measure(MeasureSpec.EXACTLY, MeasureSpec.UNSPECIFIED)
+            Timber.d("${layout.measuredWidth}")
+
+            days.forEach {
+                it.setOnClickListener {
+
+                }
+            }
         }
 
+        private val eventMap: Array<Array<Boolean>> = Array(5) {Array(7) { false } }
+
         fun render(weekData: Array<Int>, weekInfo: Int, date: Date, events: List<EventDto>) {
+
+            Timber.d("---------- render start ----------")
+
             val startDay = weekData[0]
             val endDay = weekData[6]
 
@@ -271,6 +285,8 @@ class CustomCalendarView : ConstraintLayout {
 
                 Timber.d("${it.contents} : start = ${startDayOfWeek}, end = ${endDayOfWeek}")
 
+
+
                 eventLoop@ for (i in 0..4) {
                     for (j in startDayOfWeek..endDayOfWeek) {
                         if (eventMap[i][j]) continue@eventLoop
@@ -281,6 +297,7 @@ class CustomCalendarView : ConstraintLayout {
                     }
 
                     val eventView = EventView(context)
+
                     eventView.apply {
                         this.text = it.contents
                         this.background = ContextCompat.getDrawable(context, R.drawable.event_round)
@@ -288,14 +305,54 @@ class CustomCalendarView : ConstraintLayout {
                         this.endDayOfWeek = endDayOfWeek
                         this.line = i
                     }
-                    layout.addView(eventView)
+
+                    val par = FrameLayout.LayoutParams(
+                        parentWidth * (eventView.endDayOfWeek - eventView.startDayOfWeek + 1),
+                        context.resources.getDimensionPixelSize(R.dimen.event_height)
+                    )
+
+                    par.apply {
+                        this.marginStart = parentWidth * eventView.startDayOfWeek
+                        this.topMargin = getLineSize(eventView.line)
+                    }
+
+                    Timber.d("${eventView.text} : start = ${par.marginStart}")
+
+                    eventView.layoutParams = par
+
+                    eventLayout.addView(eventView)
+
+//                    val eventCustomView = CustomEventView(context)
+//                    eventCustomView.apply {
+//                        this.text = it.contents
+//                        this.startDayOfWeek = startDayOfWeek
+//                        this.endDayOfWeek = endDayOfWeek
+//                        this.line = i
+//                    }
+//                    layout.addView(eventCustomView)
 
                     break@eventLoop
                 }
             }
 
+
+            Timber.d("----------  render end  ----------")
+
+        }
+
+        private fun getLineSize(line: Int): Int {
+            return when (line) {
+                0       -> layout.resources.getDimensionPixelSize(R.dimen.first_line_event_margin)
+                1       -> layout.resources.getDimensionPixelSize(R.dimen.second_line_event_margin)
+                2       -> layout.resources.getDimensionPixelSize(R.dimen.third_line_event_margin)
+                3       -> layout.resources.getDimensionPixelSize(R.dimen.fourth_line_event_margin)
+                4       -> layout.resources.getDimensionPixelSize(R.dimen.fifth_line_event_margin)
+                else    -> layout.resources.getDimensionPixelSize(R.dimen.first_line_event_margin)
+            }
         }
     }
+
+
 
     companion object {
         private const val WEEK_FIRST = 0
