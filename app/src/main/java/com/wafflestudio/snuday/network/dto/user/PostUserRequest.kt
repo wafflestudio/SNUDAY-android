@@ -2,7 +2,7 @@ package com.wafflestudio.snuday.network.dto.user
 
 import com.squareup.moshi.Json
 
-data class SignUpUserResponse(
+data class PostUserRequest(
     val username: String,
     val password: String,
     @Json(name = "first_name")
