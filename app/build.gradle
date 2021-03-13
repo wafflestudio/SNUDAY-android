@@ -16,6 +16,7 @@ android {
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -32,6 +33,7 @@ android {
         }
     }
     compileOptions {
+        coreLibraryDesugaringEnabled true
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
@@ -95,4 +97,12 @@ dependencies {
     // Moshi
     implementation "com.squareup.moshi:moshi-kotlin:1.11.0"
     kapt "com.squareup.moshi:moshi-kotlin-codegen:1.11.0"
+
+    // Room
+    implementation "androidx.room:room-runtime:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+    implementation "androidx.room:room-ktx:$room_version"
+
+    // Java 8+ API
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.0.9'
 }

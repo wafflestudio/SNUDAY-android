@@ -1,6 +1,7 @@
 package com.wafflestudio.snuday.models
 
 import com.squareup.moshi.Json
+import java.time.LocalDateTime
 import java.util.*
 
 data class EventDto(
@@ -8,6 +9,6 @@ data class EventDto(
     val user_id: Long,
     val channel_id: Long,
     val contents: String,
-    val startDate: Date,
-    val dueDate: Date
+    val startDate: LocalDateTime,
+    val dueDate: LocalDateTime
 )

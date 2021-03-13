@@ -9,13 +9,13 @@ import timber.log.Timber
 class SnudayApplication : Application() {
 
     companion object {
-        lateinit var APP: Context
+        lateinit var appContext: Context
     }
 
     override fun onCreate() {
         super.onCreate()
 
-        APP = this
+        appContext = this
 
         if (BuildConfig.DEBUG) {
             Timber.plant(Timber.DebugTree())

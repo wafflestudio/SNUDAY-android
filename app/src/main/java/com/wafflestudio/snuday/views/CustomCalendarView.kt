@@ -31,6 +31,7 @@ import kotlinx.android.synthetic.main.item_day.view.*
 import kotlinx.android.synthetic.main.item_week.view.*
 import timber.log.Timber
 import java.util.*
+import java.time.LocalDateTime
 
 class CustomCalendarView : ConstraintLayout {
 
@@ -263,29 +264,26 @@ class CustomCalendarView : ConstraintLayout {
 
 
             events.forEach {
-                val eventStartDate = it.startDate
+                val eventStartDate: LocalDateTime = it.startDate
                 val eventEndDate = it.dueDate
                 val eventStartCalendar = Calendar.getInstance()
                 val eventEndCalendar = Calendar.getInstance()
-                eventStartCalendar.time = eventStartDate
-                eventEndCalendar.time = eventEndDate
+                eventStartCalendar.set(eventStartDate.year, eventStartDate.monthValue - 1, eventStartDate.dayOfMonth)
+                eventEndCalendar.set(eventStartDate.year, eventStartDate.monthValue - 1, eventStartDate.dayOfMonth)
 
-                if(eventStartDate.compareTo(endDate.time) > 0) return@forEach
-                if(eventEndDate.compareTo(startDate.time) < 0) return@forEach
+                if(eventStartCalendar.time.compareTo(endDate.time) > 0) return@forEach
+                if(eventEndCalendar.time.compareTo(startDate.time) < 0) return@forEach
 
                 val startDayOfWeek =
-                    if (eventStartDate.compareTo(startDate.time) >= 0) eventStartCalendar.get(Calendar.DAY_OF_WEEK) - 1
+                    if (eventStartCalendar.time.compareTo(startDate.time) >= 0)
+                        eventStartCalendar.get(Calendar.DAY_OF_WEEK) - 1
                     else 0
                 val endDayOfWeek =
-                    if (eventEndDate.compareTo(endDate.time) <= 0) eventEndCalendar.get(Calendar.DAY_OF_WEEK) - 1
+                    if (eventEndCalendar.time.compareTo(endDate.time) <= 0)
+                        eventEndCalendar.get(Calendar.DAY_OF_WEEK) - 1
                     else 6
 
-
-
-
                 Timber.d("${it.contents} : start = ${startDayOfWeek}, end = ${endDayOfWeek}")
-
-
 
                 eventLoop@ for (i in 0..4) {
                     for (j in startDayOfWeek..endDayOfWeek) {
@@ -321,15 +319,6 @@ class CustomCalendarView : ConstraintLayout {
                     eventView.layoutParams = par
 
                     eventLayout.addView(eventView)
-
-//                    val eventCustomView = CustomEventView(context)
-//                    eventCustomView.apply {
-//                        this.text = it.contents
-//                        this.startDayOfWeek = startDayOfWeek
-//                        this.endDayOfWeek = endDayOfWeek
-//                        this.line = i
-//                    }
-//                    layout.addView(eventCustomView)
 
                     break@eventLoop
                 }

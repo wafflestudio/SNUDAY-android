@@ -26,9 +26,14 @@
     <color name="waffle_yellow">#FFF3C550</color>
     <color name="waffle_yellow_green">#FFB2D652</color>
     <color name="waffle_green">#FF60BF70</color>
+    <color name="waffle_sky_blue">#FF60CDC8</color>
+    <color name="waffle_blue">#FF4499E3</color>
+    <color name="waffle_dark_blue">#FF4D4BDD</color>
+    <color name="waffle_purple">#FFA45EAE</color>
 
     <color name="div_line">#FFDDDDDD</color>
-
     <color name="today_blue">#FF3B77FF</color>
+
+
 
 </resources>
