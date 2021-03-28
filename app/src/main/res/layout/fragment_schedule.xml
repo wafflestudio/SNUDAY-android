@@ -9,7 +9,7 @@
     <LinearLayout
         android:id="@+id/app_bar_schedule"
         android:layout_width="match_parent"
-        android:layout_height="59dp"
+        android:layout_height="56dp"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         app:layout_constraintLeft_toLeftOf="parent"

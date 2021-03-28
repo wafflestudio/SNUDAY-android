@@ -3,6 +3,7 @@ package com.wafflestudio.snuday.views
 import android.content.Context
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.DrawableWrapper
+import android.graphics.drawable.GradientDrawable
 import android.os.Build
 import android.util.AttributeSet
 import android.util.Log
@@ -24,14 +25,17 @@ import androidx.core.view.marginTop
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.wafflestudio.snuday.R
+import com.wafflestudio.snuday.color.ChannelColorManager
 import com.wafflestudio.snuday.databinding.ItemWeekBinding
 import com.wafflestudio.snuday.databinding.ViewCalendarCustomBinding
 import com.wafflestudio.snuday.models.EventDto
 import kotlinx.android.synthetic.main.item_day.view.*
 import kotlinx.android.synthetic.main.item_week.view.*
+import kotlinx.coroutines.channels.Channel
 import timber.log.Timber
 import java.util.*
 import java.time.LocalDateTime
+import javax.inject.Inject
 
 class CustomCalendarView : ConstraintLayout {
 
@@ -146,6 +150,7 @@ class CustomCalendarView : ConstraintLayout {
         private val layout = view.layout_week
         private val eventLayout = view.event_container
         private val parentWidth = parentWidth / 7
+        private val channelColorManager = ChannelColorManager.getInstance(context)
 
         private val days: List<View> = listOf(
             view.day_1,
@@ -162,11 +167,7 @@ class CustomCalendarView : ConstraintLayout {
             layout.measure(MeasureSpec.EXACTLY, MeasureSpec.UNSPECIFIED)
             Timber.d("${layout.measuredWidth}")
 
-            days.forEach {
-                it.setOnClickListener {
 
-                }
-            }
         }
 
         private val eventMap: Array<Array<Boolean>> = Array(5) {Array(7) { false } }
@@ -177,6 +178,8 @@ class CustomCalendarView : ConstraintLayout {
 
             val startDay = weekData[0]
             val endDay = weekData[6]
+
+
 
             // set color of sunday and saturday
             days[0].text_day.setTextColor(ContextCompat.getColor(context, R.color.sunday_red))
@@ -252,6 +255,12 @@ class CustomCalendarView : ConstraintLayout {
                 days[i].text_day.text = weekData[i].toString()
             }
 
+            days.forEach {
+                it.setOnClickListener {
+                    Timber.d("${it.text_day.text}")
+                }
+            }
+
             val startDate = Calendar.getInstance()
             startDate.time = date
             startDate.set(Calendar.DATE, startDay)
@@ -269,7 +278,7 @@ class CustomCalendarView : ConstraintLayout {
                 val eventStartCalendar = Calendar.getInstance()
                 val eventEndCalendar = Calendar.getInstance()
                 eventStartCalendar.set(eventStartDate.year, eventStartDate.monthValue - 1, eventStartDate.dayOfMonth)
-                eventEndCalendar.set(eventStartDate.year, eventStartDate.monthValue - 1, eventStartDate.dayOfMonth)
+                eventEndCalendar.set(eventEndDate.year, eventEndDate.monthValue - 1, eventEndDate.dayOfMonth)
 
                 if(eventStartCalendar.time.compareTo(endDate.time) > 0) return@forEach
                 if(eventEndCalendar.time.compareTo(startDate.time) < 0) return@forEach
@@ -283,7 +292,7 @@ class CustomCalendarView : ConstraintLayout {
                         eventEndCalendar.get(Calendar.DAY_OF_WEEK) - 1
                     else 6
 
-                Timber.d("${it.contents} : start = ${startDayOfWeek}, end = ${endDayOfWeek}")
+                Timber.d("${it.title} : start = ${startDayOfWeek}, end = ${endDayOfWeek}")
 
                 eventLoop@ for (i in 0..4) {
                     for (j in startDayOfWeek..endDayOfWeek) {
@@ -297,12 +306,16 @@ class CustomCalendarView : ConstraintLayout {
                     val eventView = EventView(context)
 
                     eventView.apply {
-                        this.text = it.contents
-                        this.background = ContextCompat.getDrawable(context, R.drawable.event_round)
+                        this.text = it.title
+                        val grd = ContextCompat.getDrawable(context, R.drawable.event_round) as GradientDrawable
+                        grd.setColor(channelColorManager.getColorById(it.channel_id, context))
+                        this.background = grd
                         this.startDayOfWeek = startDayOfWeek
                         this.endDayOfWeek = endDayOfWeek
                         this.line = i
                     }
+
+
 
                     val par = FrameLayout.LayoutParams(
                         parentWidth * (eventView.endDayOfWeek - eventView.startDayOfWeek + 1),

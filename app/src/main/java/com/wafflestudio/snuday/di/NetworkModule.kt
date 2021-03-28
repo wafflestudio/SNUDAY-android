@@ -31,7 +31,7 @@ class NetworkModule {
 
         val tokenInterceptor = object: Interceptor {
             override fun intercept(chain: Interceptor.Chain): Response {
-                val token = PreferenceManager.getDefaultSharedPreferences(SnudayApplication.APP)
+                val token = PreferenceManager.getDefaultSharedPreferences(SnudayApplication.appContext)
                     .getString("ACCESS_TOKEN", null)
                 val request = chain.request()
                 token?.let {return chain.proceed(request.newBuilder().header(

@@ -34,6 +34,9 @@
     <color name="div_line">#FFDDDDDD</color>
     <color name="today_blue">#FF3B77FF</color>
 
+    <!-- Notification -->
+    <color name="notification_background">#FFEDEDED</color>
+
 
 
 </resources>

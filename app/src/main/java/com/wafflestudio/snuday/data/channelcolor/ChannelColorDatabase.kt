@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.sqlite.db.SupportSQLiteDatabase
 
 @Database(entities = [ChannelColor::class], version = 1, exportSchema = false)
 abstract class ChannelColorDatabase : RoomDatabase() {
@@ -11,24 +12,19 @@ abstract class ChannelColorDatabase : RoomDatabase() {
     abstract fun channelColorDao(): ChannelColorDao
 
     companion object {
+
+        // For Singleton instantiation
         @Volatile
-        private var INSTANCE: ChannelColorDatabase? = null
+        private var instance: ChannelColorDatabase? = null
 
         fun getInstance(context: Context): ChannelColorDatabase {
-
-            return INSTANCE ?: synchronized(this) {
-                val instance = Room.databaseBuilder(
-                    context.applicationContext,
+            return instance ?: synchronized(this) {
+                instance ?: Room.databaseBuilder(
+                    context,
                     ChannelColorDatabase::class.java,
                     "channel_color_database"
-                ).build()
-                INSTANCE = instance
-                // return instance
-                instance
-
+                ).fallbackToDestructiveMigration().build()
             }
         }
     }
-
-
 }

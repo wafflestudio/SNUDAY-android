@@ -40,4 +40,7 @@
     <!-- Schedules Fragment -->
     <string name="filter_setting">필터 설정</string>
 
+    <!-- Notification Fragment -->
+    <string name="notification_app_bar">공지</string>
+
 </resources>

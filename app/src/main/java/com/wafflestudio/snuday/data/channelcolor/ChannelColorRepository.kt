@@ -1,16 +1,30 @@
 package com.wafflestudio.snuday.data.channelcolor
 
 import android.content.Context
-import io.reactivex.rxjava3.core.Single
+import io.reactivex.rxjava3.core.Completable
+import io.reactivex.rxjava3.core.Observable
+import io.reactivex.rxjava3.subjects.BehaviorSubject
 
-class ChannelColorRepository(context: Context) {
+class ChannelColorRepository (context: Context) {
 
     private val channelColorDao = ChannelColorDatabase.getInstance(context).channelColorDao()
-    private var colorList: List<ChannelColor>? = null
+    private var colorListSubject = BehaviorSubject.create<List<ChannelColor>>()
 
-    fun getAllChannelColors(): Single<List<ChannelColor>> = colorList?.let { Single.just(it) }
-        ?: channelColorDao.getAllChannelColors().doOnSuccess {
-            colorList = it
-        }
+
+    fun getAllChannelColors() =
+        channelColorDao
+            .getAllChannelColors()
+            .doOnSuccess {
+                colorListSubject.onNext(it)
+            }
+            .doOnError {
+                colorListSubject.onNext(emptyList())
+            }
+
+
+    fun getChannelColors(): Observable<List<ChannelColor>> = colorListSubject.hide()
+
+    fun insertChannelColors(channelColor: ChannelColor): Completable =
+        channelColorDao.insertChannelColor(channelColor)
 
 }

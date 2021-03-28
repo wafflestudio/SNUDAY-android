@@ -15,6 +15,8 @@ import com.wafflestudio.snuday.utils.*
 import com.wafflestudio.snuday.views.CustomCalendarView
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
+import java.time.LocalDateTime
+import java.time.ZoneId
 import java.util.*
 
 @AndroidEntryPoint
@@ -50,6 +52,8 @@ class ScheduleFragment : Fragment() {
         binding.customCalendarView.setDatesToCalendar(currentDate.time)
         binding.textYearShow.text = currentDate.getYearText()
         binding.textMonthShow.text = currentDate.getMonthText(requireContext())
+
+
     }
 
 }

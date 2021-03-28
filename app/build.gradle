@@ -89,6 +89,7 @@ dependencies {
     implementation "com.squareup.retrofit2:adapter-rxjava3:$retrofitVersion"
     implementation "com.squareup.retrofit2:converter-moshi:$retrofitVersion"
     implementation "com.github.akarnokd:rxjava3-retrofit-adapter:3.0.0"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
 
     // RxJava
     implementation 'io.reactivex.rxjava3:rxjava:3.0.2'
@@ -102,6 +103,7 @@ dependencies {
     implementation "androidx.room:room-runtime:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
     implementation "androidx.room:room-ktx:$room_version"
+    implementation "androidx.room:room-rxjava3:$room_version"
 
     // Java 8+ API
     coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.0.9'

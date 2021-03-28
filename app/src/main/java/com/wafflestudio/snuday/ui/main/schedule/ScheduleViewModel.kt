@@ -5,4 +5,9 @@ import androidx.lifecycle.ViewModel
 
 class ScheduleViewModel @ViewModelInject constructor() : ViewModel() {
 
+    init {
+
+    }
+
+
 }
