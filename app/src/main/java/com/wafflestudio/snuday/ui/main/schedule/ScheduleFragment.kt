@@ -4,19 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.wafflestudio.snuday.R
 import com.wafflestudio.snuday.databinding.FragmentScheduleBinding
-import com.wafflestudio.snuday.models.EventDto
 import com.wafflestudio.snuday.utils.*
-import com.wafflestudio.snuday.views.CustomCalendarView
 import dagger.hilt.android.AndroidEntryPoint
-import java.text.SimpleDateFormat
-import java.time.LocalDateTime
-import java.time.ZoneId
 import java.util.*
 
 @AndroidEntryPoint

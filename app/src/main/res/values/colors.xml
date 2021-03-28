@@ -36,6 +36,8 @@
 
     <!-- Notification -->
     <color name="notification_background">#FFEDEDED</color>
+    <color name="notification_search_blue">#FF457AF6</color>
+    <color name="notification_hint_gray">#FFB8B8B8</color>
 
 
 

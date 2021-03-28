@@ -1,4 +1,4 @@
-package com.wafflestudio.snuday.models
+package com.wafflestudio.snuday.model
 
 import com.squareup.moshi.Json
 

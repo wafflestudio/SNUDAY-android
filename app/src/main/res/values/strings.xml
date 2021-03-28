@@ -38,9 +38,15 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <!-- Schedules Fragment -->
-    <string name="filter_setting">필터 설정</string>
+    <string name="schedules_filter_setting">필터 설정</string>
+    <string name="schedules_today">오늘</string>
 
     <!-- Notification Fragment -->
     <string name="notification_app_bar">공지</string>
+    <string name="notification_search_filter_all">전체</string>
+
+    <string name="notification_filter_hint">키워드로 검색해보세요.</string>
+    <string name="notification_subscribed_tag_text">구독한 태그 글</string>
+    <string name="notification_filter_setting">필터 설정</string>
 
 </resources>

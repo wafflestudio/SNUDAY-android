@@ -1,8 +1,7 @@
-package com.wafflestudio.snuday.models
+package com.wafflestudio.snuday.model
 
 import com.squareup.moshi.Json
 import java.time.LocalDateTime
-import java.util.*
 
 data class EventDto(
     val id: Long,

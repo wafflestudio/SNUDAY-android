@@ -1,41 +1,25 @@
 package com.wafflestudio.snuday.views
 
 import android.content.Context
-import android.graphics.drawable.Drawable
-import android.graphics.drawable.DrawableWrapper
 import android.graphics.drawable.GradientDrawable
-import android.os.Build
 import android.util.AttributeSet
-import android.util.Log
-import android.util.TypedValue
-import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
-import android.widget.Space
-import android.widget.TextView
-import androidx.annotation.RequiresApi
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.content.ContextCompat
-import androidx.core.graphics.drawable.DrawableCompat
-import androidx.core.view.doOnLayout
-import androidx.core.view.marginTop
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.wafflestudio.snuday.R
 import com.wafflestudio.snuday.color.ChannelColorManager
-import com.wafflestudio.snuday.databinding.ItemWeekBinding
 import com.wafflestudio.snuday.databinding.ViewCalendarCustomBinding
-import com.wafflestudio.snuday.models.EventDto
+import com.wafflestudio.snuday.model.EventDto
 import kotlinx.android.synthetic.main.item_day.view.*
 import kotlinx.android.synthetic.main.item_week.view.*
-import kotlinx.coroutines.channels.Channel
 import timber.log.Timber
 import java.util.*
 import java.time.LocalDateTime
-import javax.inject.Inject
 
 class CustomCalendarView : ConstraintLayout {
 
@@ -308,7 +292,7 @@ class CustomCalendarView : ConstraintLayout {
                     eventView.apply {
                         this.text = it.title
                         val grd = ContextCompat.getDrawable(context, R.drawable.event_round) as GradientDrawable
-                        grd.setColor(channelColorManager.getColorById(it.channel_id, context))
+                        grd.setColor(channelColorManager.getColorById(it.channelId, context))
                         this.background = grd
                         this.startDayOfWeek = startDayOfWeek
                         this.endDayOfWeek = endDayOfWeek
