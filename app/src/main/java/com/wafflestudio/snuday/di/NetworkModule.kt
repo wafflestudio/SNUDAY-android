@@ -4,6 +4,11 @@ import androidx.preference.PreferenceManager
 import com.squareup.moshi.Moshi
 import com.wafflestudio.snuday.BuildConfig
 import com.wafflestudio.snuday.SnudayApplication
+import com.wafflestudio.snuday.network.RetrofitChannelService
+import com.wafflestudio.snuday.network.RetrofitUserService
+import com.wafflestudio.snuday.preference.PreferenceHelper
+import com.wafflestudio.snuday.service.ChannelService
+import com.wafflestudio.snuday.service.UserService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -31,11 +36,10 @@ class NetworkModule {
 
         val tokenInterceptor = object: Interceptor {
             override fun intercept(chain: Interceptor.Chain): Response {
-                val token = PreferenceManager.getDefaultSharedPreferences(SnudayApplication.appContext)
-                    .getString("ACCESS_TOKEN", null)
+                val token = PreferenceHelper.getString(SnudayApplication.appContext, PreferenceHelper.ACCESS_TOKEN)
                 val request = chain.request()
-                token?.let {return chain.proceed(request.newBuilder().header(
-                    "Authorization", "Token $token").build())
+                if (token != "") {
+                    return chain.proceed(request.newBuilder().header("Authorization", "Bearer $token").build())
                 }
                 return chain.proceed(request.newBuilder().build())
             }
@@ -45,9 +49,23 @@ class NetworkModule {
             .addInterceptor(loggingInterceptor)
             .addInterceptor(tokenInterceptor)
             .build()
-    } else OkHttpClient
-        .Builder()
-        .build()
+    } else {
+        val tokenInterceptor = object: Interceptor {
+            override fun intercept(chain: Interceptor.Chain): Response {
+                val token = PreferenceHelper.getString(SnudayApplication.appContext, PreferenceHelper.ACCESS_TOKEN)
+                val request = chain.request()
+
+                if (token != "") {
+                    return chain.proceed(request.newBuilder().header("Authorization", "Bearer $token").build())
+                }
+                return chain.proceed(request.newBuilder().build())
+            }
+        }
+
+        OkHttpClient.Builder()
+            .addInterceptor(tokenInterceptor)
+            .build()
+    }
 
     @Provides
     @Singleton
@@ -62,4 +80,15 @@ class NetworkModule {
             .baseUrl(baseUrl)
             .build()
 
+    @Provides
+    @Singleton
+    fun provideChannelService(retrofit: Retrofit): ChannelService {
+        return ChannelService(retrofit.create(RetrofitChannelService::class.java))
+    }
+
+    @Provides
+    @Singleton
+    fun provideUserService(retrofit: Retrofit): UserService {
+        return UserService(retrofit.create(RetrofitUserService::class.java))
+    }
 }

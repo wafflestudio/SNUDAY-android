@@ -10,6 +10,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.wafflestudio.snuday.databinding.FragmentScheduleBinding
 import com.wafflestudio.snuday.utils.*
 import dagger.hilt.android.AndroidEntryPoint
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.disposables.CompositeDisposable
+import io.reactivex.rxjava3.schedulers.Schedulers
+import timber.log.Timber
 import java.util.*
 
 @AndroidEntryPoint
@@ -20,6 +24,8 @@ class ScheduleFragment : Fragment() {
 
     private lateinit var tagAdapter: TagAdapter
     private lateinit var tagLayoutManager: LinearLayoutManager
+
+    private val compositeDisposable = CompositeDisposable()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -46,7 +52,22 @@ class ScheduleFragment : Fragment() {
         binding.textYearShow.text = currentDate.getYearText()
         binding.textMonthShow.text = currentDate.getMonthText(requireContext())
 
+        viewModel.getEvents()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({ response ->
+                viewModel.events = response.results
+                binding.customCalendarView.bindEvents(viewModel.events)
+            }, {
+                Timber.d(it)
+            }).also { compositeDisposable.add(it) }
 
+
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        compositeDisposable.dispose()
     }
 
 }

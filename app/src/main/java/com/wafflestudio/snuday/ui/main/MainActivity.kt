@@ -1,5 +1,7 @@
 package com.wafflestudio.snuday.ui.main
 
+import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.add
@@ -69,7 +71,11 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-
+    companion object {
+        fun createIntent(context : Context): Intent {
+            return Intent(context, MainActivity::class.java)
+        }
+    }
 
 
 

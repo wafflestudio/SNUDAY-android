@@ -8,6 +8,13 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
+    <!-- Splash -->
+    <color name="splash_background">#FF457AF6</color>
+
+    <!-- Login -->
+    <color name="login_edit_text_stroke">#FFDDDDDD</color>
+    <color name="login_button">#FF457AF6</color>
+    <color name="login_text">#FFB8B8B8</color>
 
     <!-- Schedule -->
     <color name="tag_filter">#FFB8B8B8</color>
@@ -38,6 +45,11 @@
     <color name="notification_background">#FFEDEDED</color>
     <color name="notification_search_blue">#FF457AF6</color>
     <color name="notification_hint_gray">#FFB8B8B8</color>
+    
+    <!-- Search -->
+    <color name="search_background">#FFEDEDED</color>
+    <color name="tag_white_stroke">#FFDDDDDD</color>
+
 
 
 
