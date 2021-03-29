@@ -308,7 +308,7 @@ class CustomCalendarView : ConstraintLayout {
                     eventView.apply {
                         this.text = it.title
                         val grd = ContextCompat.getDrawable(context, R.drawable.event_round) as GradientDrawable
-                        grd.setColor(channelColorManager.getColorById(it.channel_id, context))
+                        grd.setColor(channelColorManager.getColorById(it.channelId, context))
                         this.background = grd
                         this.startDayOfWeek = startDayOfWeek
                         this.endDayOfWeek = endDayOfWeek
