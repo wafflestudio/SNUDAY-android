@@ -62,4 +62,7 @@
 
     <string name="search_recommend">이런 채널도 있어요!</string>
 
+    <!-- Channel Fragment -->
+    <string name="channel_app_bar">채널 페이지</string>
+
 </resources>

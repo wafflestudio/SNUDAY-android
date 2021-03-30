@@ -25,5 +25,5 @@ fun Calendar.getMonthText(context: Context): String {
 }
 
 fun Calendar.getYearText(): String {
-    return this.get(Calendar.YEAR).toString()
+    return this.get(Calendar.YEAR).toString() + "년"
 }

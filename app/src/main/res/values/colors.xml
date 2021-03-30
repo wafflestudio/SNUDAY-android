@@ -50,6 +50,9 @@
     <color name="search_background">#FFEDEDED</color>
     <color name="tag_white_stroke">#FFDDDDDD</color>
 
+    <!-- Channel -->
+    <color name="channel_background">#FFEDEDED</color>
+
 
 
 

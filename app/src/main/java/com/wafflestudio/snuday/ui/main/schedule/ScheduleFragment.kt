@@ -39,6 +39,8 @@ class ScheduleFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        Timber.d("created")
+
         // Tag RecyclerView
         tagAdapter = TagAdapter()
         tagLayoutManager =
@@ -56,16 +58,27 @@ class ScheduleFragment : Fragment() {
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ response ->
-                viewModel.events = response.results
+                viewModel.events = response
                 binding.customCalendarView.bindEvents(viewModel.events)
             }, {
                 Timber.d(it)
             }).also { compositeDisposable.add(it) }
 
+        viewModel.getSubscribingChannels()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({ response ->
+                viewModel.channels = response.results
+                tagAdapter.channels = viewModel.channels.toMutableList()
+                tagAdapter.notifyDataSetChanged()
+            }, {
+                Timber.d(it)
+            }).also { compositeDisposable.add(it) }
 
     }
 
     override fun onDestroy() {
+        Timber.d("destroy")
         super.onDestroy()
         compositeDisposable.dispose()
     }

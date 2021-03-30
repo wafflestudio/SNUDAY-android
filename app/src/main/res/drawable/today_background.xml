@@ -8,11 +8,10 @@
         />
 
     <size
-        android:width="21.5dp"
+        android:width="21dp"
         android:height="22dp" />
 
     <solid
         android:color="@color/today_blue" />
-
 
 </shape>
