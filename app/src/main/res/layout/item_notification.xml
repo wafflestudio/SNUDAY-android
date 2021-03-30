@@ -21,7 +21,7 @@
         />
 
     <TextView
-        android:id="@+id/text_content"
+        android:id="@+id/text_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/tag_item_detail"
@@ -36,8 +36,8 @@
         android:id="@+id/text_period"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/text_content"
-        app:layout_constraintStart_toStartOf="@+id/text_content"
+        app:layout_constraintTop_toBottomOf="@id/text_title"
+        app:layout_constraintStart_toStartOf="@id/text_title"
         android:layout_marginTop="5dp"
         tools:text="12월 14일 (월) 9:00 ~ 1월 15일 (금) 18:00"
         android:textSize="10dp"

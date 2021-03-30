@@ -4,6 +4,7 @@ import com.wafflestudio.snuday.model.EventDto
 import com.wafflestudio.snuday.network.dto.user.*
 import com.wafflestudio.snuday.network.dto.user.channel.GetSubscribingChannelResponse
 import com.wafflestudio.snuday.network.dto.user.event.GetEventResponse
+import com.wafflestudio.snuday.network.dto.user.notice.GetNoticeResponse
 import io.reactivex.rxjava3.core.Single
 import retrofit2.Response
 import retrofit2.http.Body
@@ -37,4 +38,8 @@ interface RetrofitUserService {
     // Get Channels of User
     @GET("users/me/subscribing_channels/")
     fun getSubscribingChannel(): Single<GetSubscribingChannelResponse>
+
+    // Get Notices of User
+    @GET("users/me/notices/")
+    fun getNotice(): Single<GetNoticeResponse>
 }

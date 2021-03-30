@@ -19,4 +19,6 @@ class UserService (
 
     fun getSubscribingChannel() = retrofitUserService.getSubscribingChannel()
 
+    fun getNotice() = retrofitUserService.getNotice()
+
 }

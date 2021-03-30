@@ -29,7 +29,7 @@ class TagAdapter() : RecyclerView.Adapter<TagViewHolder>() {
 }
 
 class TagViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-    private val tagName: TextView = view.text_tag
+    private val tagName: TextView = view.text_channel_name
 
     fun render(channel: ChannelDto) {
         val displayText = "# ${channel.name}"

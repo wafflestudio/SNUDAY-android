@@ -169,52 +169,76 @@ class CustomCalendarView : ConstraintLayout {
             days[0].text_day.setTextColor(ContextCompat.getColor(context, R.color.sunday_red))
             days[6].text_day.setTextColor(ContextCompat.getColor(context, R.color.saturday_blue))
 
+            days.forEach {
+                it.setOnClickListener {
+                    Timber.d("${it.text_day.text}")
+                }
+            }
+
             when (weekInfo) {
                 WEEK_FIRST -> for (i in 0 until 7) {
                     if (weekData[i] > 7) {
                         when (i) {
-                            0 -> days[i].text_day.setTextColor(
-                                ContextCompat.getColor(
-                                    context,
-                                    R.color.sunday_red_opaque
+                            0 -> {
+                                days[i].text_day.setTextColor(
+                                    ContextCompat.getColor(
+                                        context,
+                                        R.color.sunday_red_opaque
+                                    )
                                 )
-                            )
-                            6 -> days[i].text_day.setTextColor(
-                                ContextCompat.getColor(
-                                    context,
-                                    R.color.saturday_blue_opaque
+                                days[i].setOnClickListener { }
+                            }
+                            6 -> {
+                                days[i].text_day.setTextColor(
+                                    ContextCompat.getColor(
+                                        context,
+                                        R.color.saturday_blue_opaque
+                                    )
                                 )
-                            )
-                            else -> days[i].text_day.setTextColor(
-                                ContextCompat.getColor(
-                                    context,
-                                    R.color.date_black_opaque
+                                days[i].setOnClickListener { }
+                            }
+                            else -> {
+                                days[i].text_day.setTextColor(
+                                    ContextCompat.getColor(
+                                        context,
+                                        R.color.date_black_opaque
+                                    )
                                 )
-                            )
+                                days[i].setOnClickListener {  }
+                            }
                         }
                     }
                 }
                 WEEK_LAST -> for (i in 0 until 7) {
                     if (weekData[i] < 7) {
                         when (i) {
-                            0 -> days[i].text_day.setTextColor(
-                                ContextCompat.getColor(
-                                    context,
-                                    R.color.sunday_red_opaque
+                            0 -> {
+                                days[i].text_day.setTextColor(
+                                    ContextCompat.getColor(
+                                        context,
+                                        R.color.sunday_red_opaque
+                                    )
                                 )
-                            )
-                            6 -> days[i].text_day.setTextColor(
-                                ContextCompat.getColor(
-                                    context,
-                                    R.color.saturday_blue_opaque
+                                days[i].setOnClickListener { }
+                            }
+                            6 -> {
+                                days[i].text_day.setTextColor(
+                                    ContextCompat.getColor(
+                                        context,
+                                        R.color.saturday_blue_opaque
+                                    )
                                 )
-                            )
-                            else -> days[i].text_day.setTextColor(
-                                ContextCompat.getColor(
-                                    context,
-                                    R.color.date_black_opaque
+                                days[i].setOnClickListener { }
+                            }
+                            else -> {
+                                days[i].text_day.setTextColor(
+                                    ContextCompat.getColor(
+                                        context,
+                                        R.color.date_black_opaque
+                                    )
                                 )
-                            )
+                                days[i].setOnClickListener {  }
+                            }
                         }
                     }
                 }
@@ -237,12 +261,6 @@ class CustomCalendarView : ConstraintLayout {
 
             for (i in 0 until 7) {
                 days[i].text_day.text = weekData[i].toString()
-            }
-
-            days.forEach {
-                it.setOnClickListener {
-                    Timber.d("${it.text_day.text}")
-                }
             }
 
             val startDate = Calendar.getInstance()

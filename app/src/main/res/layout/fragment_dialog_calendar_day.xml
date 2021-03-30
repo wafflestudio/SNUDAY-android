@@ -51,7 +51,6 @@
         app:layout_constraintStart_toStartOf="@id/div_line"
         app:layout_constraintEnd_toEndOf="@id/div_line"
         tools:listitem="@layout/item_event_dialog_day"
-
         />
 
     <View
@@ -67,6 +66,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="14.5dp"
         android:layout_marginBottom="102dp"/>
+
+    <ImageView
+        android:id="@+id/button_add_schedule"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:src="@drawable/button_add"
+        android:layout_marginEnd="22dp"
+        android:layout_marginBottom="22dp"
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
