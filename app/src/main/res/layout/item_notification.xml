@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:layout_marginBottom="10dp">
+
+    <include
+        android:id="@+id/tag_channel"
+        layout="@layout/item_channel_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="17dp"
+        android:layout_marginStart="15dp"
+        />
+
+    <TextView
+        android:id="@+id/text_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tag_channel"
+        app:layout_constraintStart_toStartOf="@id/tag_channel"
+        android:layout_marginTop="6dp"
+        android:textSize="15dp"
+        tools:text="와플스튜디오 겨울 프로젝트 시작"
+        android:textColor="@color/black"
+        />
+
+    <TextView
+        android:id="@+id/text_contents"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/text_title"
+        app:layout_constraintStart_toStartOf="@id/text_title"
+        android:textColor="@color/calendar_weekday_gray"
+        android:layout_marginTop="5dp"
+        android:maxLines="1"
+        android:ellipsize="end"
+        tools:text="와플스튜디오 겨울 프로젝트가 시작됩니다! 와플스튜디오 겨울 프로젝트가 시작됩니다! 와플스튜디오 겨울 프로젝트가 시작됩니다! 와플스튜디오 겨울 프로젝트가 시작됩니다!"
+        android:textSize="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="15dp"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

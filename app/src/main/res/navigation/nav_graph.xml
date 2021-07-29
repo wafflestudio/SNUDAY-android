@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.wafflestudio.snuday.ui.main.MainFragment"
+        android:label="MainFragment"
+        tools:layout="@layout/fragment_main">
+
+        <action
+            android:id="@+id/action_mainFragment_to_channelDetailActivity"
+            app:destination="@id/channelDetailFragment"
+            app:enterAnim="@anim/slide_left"
+            app:exitAnim="@anim/wait_anim"
+            app:popEnterAnim="@anim/wait_anim"
+            app:popExitAnim="@anim/slide_right" />
+        <action
+            android:id="@+id/action_mainFragment_to_noticeDetailActivity"
+            app:destination="@id/noticeDetailFragment"
+            app:enterAnim="@anim/slide_left"
+            app:exitAnim="@anim/wait_anim"
+            app:popEnterAnim="@anim/wait_anim"
+            app:popExitAnim="@anim/slide_right" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/channelDetailFragment"
+        android:name="com.wafflestudio.snuday.ui.channel_detail.ChannelDetailFragment"
+        android:label="ChannelDetailFragment"
+        tools:layout="@layout/fragment_channel_detail">
+        <argument
+            android:name="channelId"
+            app:argType="integer" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/noticeDetailFragment"
+        android:name="com.wafflestudio.snuday.ui.notice_detail.NoticeDetailFragment"
+        android:label="NoticeDetailFragment"
+        tools:layout="@layout/fragment_notice_detail">
+        <argument
+            android:name="channelName"
+            app:argType="string" />
+        <argument
+            android:name="channelId"
+            app:argType="integer" />
+        <argument
+            android:name="noticeId"
+            app:argType="integer" />
+    </fragment>
+
+
+</navigation>

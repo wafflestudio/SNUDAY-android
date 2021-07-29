@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
+
+    <LinearLayout
+        android:id="@+id/layout_day"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/custom_calendar_sunday"
+            android:gravity="center"
+            android:textSize="15dp"
+            android:layout_weight="1"
+            android:textColor="@color/calendar_sunday_red"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/custom_calendar_monday"
+            android:gravity="center"
+            android:textSize="15dp"
+            android:layout_weight="1"
+            android:textColor="@color/calendar_weekday_gray"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/custom_calendar_tuesday"
+            android:gravity="center"
+            android:textSize="15dp"
+            android:layout_weight="1"
+            android:textColor="@color/calendar_weekday_gray"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/custom_calendar_wednesday"
+            android:gravity="center"
+            android:textSize="15dp"
+            android:layout_weight="1"
+            android:textColor="@color/calendar_weekday_gray"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/custom_calendar_thursday"
+            android:gravity="center"
+            android:textSize="15dp"
+            android:layout_weight="1"
+            android:textColor="@color/calendar_weekday_gray"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/custom_calendar_friday"
+            android:gravity="center"
+            android:textSize="15dp"
+            android:layout_weight="1"
+            android:textColor="@color/calendar_weekday_gray"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/custom_calendar_saturday"
+            android:gravity="center"
+            android:textSize="15dp"
+            android:layout_weight="1"
+            android:textColor="@color/calendar_saturday_blue"/>
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/div_line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/calendar_div_line_gray"
+        app:layout_constraintTop_toBottomOf="@id/layout_day"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/calendar_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/div_line"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/item_calendar_week" />
+
+</merge>

@@ -7,4 +7,49 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="black_50percent">#80000000</color>
+    <color name="black_30percent">#4D000000</color>
+
+    <!-- SNUDAY -->
+    <color name="snuday_blue">#FF457AF6</color>
+    <color name="snuday_background_gray">#FFEDEDED</color>
+    <color name="snuday_hint_text_gray">#FFB8B8B8</color>
+    <color name="snuday_div_line">#FFDDDDDD</color>
+
+    <!-- calendar -->
+    <color name="calendar_weekday_gray">#FF6A6A6A</color>
+    <color name="calendar_weekday_gray_light">#666A6A6A</color>
+    <color name="calendar_sunday_red">#FFD94B4B</color>
+    <color name="calendar_sunday_red_light">#66D94B4B</color>
+    <color name="calendar_saturday_blue">#FF3C69E3</color>
+    <color name="calendar_saturday_blue_light">#663C69E3</color>
+    <color name="calendar_div_line_gray">#FFDDDDDD</color>
+
+    <!-- themes S -->
+
+    <!-- theme SNUTT -->
+    <color name="snutt_color_1">#FFD4515D</color>
+    <color name="snutt_color_2">#FFE8914F</color>
+    <color name="snutt_color_3">#FFF3C550</color>
+    <color name="snutt_color_4">#FFB2D652</color>
+    <color name="snutt_color_5">#FF60BF70</color>
+    <color name="snutt_color_6">#FF60CDC8</color>
+    <color name="snutt_color_7">#FF4499E3</color>
+    <color name="snutt_color_8">#FF4D4BDD</color>
+    <color name="snutt_color_9">#FFA45EAE</color>
+
+    <!-- Opacity
+    100% — FF
+    90% — E6
+    80% — CC
+    70% — B3
+    60% — 99
+    50% — 80
+    40% — 66
+    30% — 4D
+    20% — 33
+    10% — 1A
+    -->
+
+
 </resources>

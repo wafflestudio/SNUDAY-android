@@ -6,9 +6,12 @@ buildscript {
         retrofit_version = '2.9.0'
         rxjava3_version = '3.0.2'
         moshi_version = '1.11.0'
-        dagger_hilt_core_version = "2.29.1-alpha"
-        dagger_hilt_version = "1.0.0-alpha02"
+        dagger_hilt_core_version = "2.33-beta"
+        dagger_hilt_version = "1.0.0"
         room_version = "2.3.0-rc01"
+        navigation_version = "2.3.4"
+        glide_version = "4.12.0"
+        paging_version = "3.0.0-beta02"
     }
 
     repositories {
@@ -19,6 +22,7 @@ buildscript {
         classpath "com.android.tools.build:gradle:4.1.0"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "com.google.dagger:hilt-android-gradle-plugin:$dagger_hilt_core_version"
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$navigation_version"
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files

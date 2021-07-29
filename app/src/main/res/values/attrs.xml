@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CustomCalendarView">
+        <attr name="clickEnabled" format="boolean"/>
+        <attr name="showToday" format="boolean"/>
+        <attr name="maxWeekCount" format="integer"/>
+        <attr name="fullCalendar" format="boolean"/>
+    </declare-styleable>
+</resources>
