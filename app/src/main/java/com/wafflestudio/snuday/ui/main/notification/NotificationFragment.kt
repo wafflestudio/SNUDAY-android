@@ -9,12 +9,17 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.wafflestudio.snuday.R
 import com.wafflestudio.snuday.databinding.FragmentNotificationBinding
 import com.wafflestudio.snuday.ui.main.MainFragmentDirections
+import com.wafflestudio.snuday.ui.main.search.SearchFilter
+import com.wafflestudio.snuday.utils.showToast
 import com.wafflestudio.snuday.utils.subIoObsMain
+import com.wafflestudio.snuday.utils.visibleOrGone
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.disposables.CompositeDisposable
+import retrofit2.HttpException
 import timber.log.Timber
 import java.util.*
 
@@ -53,6 +58,51 @@ class NotificationFragment : Fragment() {
             layoutManager = notificationLayoutManager
         }
 
+        binding.backgroundFilter.setOnClickListener {
+            makeFilterLayoutGone()
+        }
+
+        binding.buttonSearchFilter.setOnClickListener {
+            binding.backgroundFilter.visibleOrGone(true)
+            binding.listNotificationFilter.visibleOrGone(true)
+        }
+
+        binding.textNotificationFilterAll.setOnClickListener {
+            makeFilterLayoutGone()
+            vm.setFilter(NoticeFilter.ALL)
+        }
+
+        binding.textNotificationFilterContents.setOnClickListener {
+            makeFilterLayoutGone()
+            vm.setFilter(NoticeFilter.CONTENTS)
+        }
+
+        binding.textNotificationFilterTitle.setOnClickListener {
+            makeFilterLayoutGone()
+            vm.setFilter(NoticeFilter.TITLE)
+        }
+
+        vm.observeNoticeFliter().subscribe {
+            when(it) {
+                NoticeFilter.ALL -> binding.textFilter.text = getString(R.string.notification_search_filter_all)
+                NoticeFilter.CONTENTS -> binding.textFilter.text = getString(R.string.notification_search_filter_contents)
+                NoticeFilter.TITLE -> binding.textFilter.text = getString(R.string.notification_search_filter_title)
+            }
+        }
+
+        binding.buttonSearch.setOnClickListener {
+            vm.searchNotice(binding.editTextSearchFilter.text.toString())
+                .subIoObsMain()
+                .subscribe({ response ->
+                    notificationLayoutManager.scrollToPosition(0)
+                }, {
+                    val e = it as HttpException
+                    if (e.code() == 400) showToast(getString(R.string.search_need_more_word))
+                    Timber.e(it)
+                }).also { compositeDisposable.add(it) }
+        }
+
+
         binding.recyclerViewNotification.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
@@ -80,5 +130,16 @@ class NotificationFragment : Fragment() {
         }, {
             Timber.d(it)
         }).also { compositeDisposable.add(it) }
+    }
+
+    override fun onDestroy() {
+        compositeDisposable.clear()
+
+        super.onDestroy()
+    }
+
+    private fun makeFilterLayoutGone() {
+        binding.backgroundFilter.visibleOrGone(false)
+        binding.listNotificationFilter.visibleOrGone(false)
     }
 }

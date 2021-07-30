@@ -18,7 +18,6 @@ class NotificationViewModel @Inject constructor(
     private val userDataRepository: UserDataRepository
 ) : ViewModel() {
 
-
     private var searchCursor: String? = null
     private var searchKey: String = ""
     private var savedFilter: NoticeFilter = NoticeFilter.ALL
@@ -35,7 +34,7 @@ class NotificationViewModel @Inject constructor(
 
     private val _noticeFilter = BehaviorSubject.createDefault(NoticeFilter.ALL)
     fun observeNoticeFliter() = _noticeFilter.hide()
-    fun setNoticeFilter(filter: NoticeFilter) { _noticeFilter.onNext(filter) }
+    fun setFilter(filter: NoticeFilter) { _noticeFilter.onNext(filter) }
 
 
     fun fetchNotice(): Single<FetchNoticeResponse> {
