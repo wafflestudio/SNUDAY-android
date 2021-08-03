@@ -13,11 +13,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.main.RootActivity" />
-        <activity android:name=".ui.entry.LoginActivity" />
+        <activity android:name=".ui.entry.SignUpActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ui.main.RootActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ui.entry.LoginActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".ui.splash.SplashActivity"
-            android:theme="@style/SplashTheme">
+            android:theme="@style/SplashTheme"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

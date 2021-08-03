@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.wafflestudio.snuday.databinding.ActivityLoginBinding
 import com.wafflestudio.snuday.repository.UserStatusManager
 import com.wafflestudio.snuday.ui.main.RootActivity
+import com.wafflestudio.snuday.utils.showToast
 import com.wafflestudio.snuday.utils.subIoObsMain
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.rxjava3.disposables.CompositeDisposable
@@ -42,6 +43,10 @@ class LoginActivity : AppCompatActivity() {
                 }, {
                     Timber.d(it)
                 }).also { compositeDisposable.add(it) }
+        }
+
+        binding.buttonSignUp.setOnClickListener {
+            startActivity(SignUpActivity.createIntent(this))
         }
     }
 

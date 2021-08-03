@@ -11,6 +11,39 @@
     <string name="login_sign_up"><u>회원가입</u></string>
     <string name="login_find_id"><u>아이디 찾기</u></string>
 
+    <!-- SignUp Activity -->
+    <string name="sign_up_app_bar">회원가입</string>
+    <string name="sign_up_greeting">스누데이에 오신 것을 환영합니다.</string>
+    <string name="sign_up_id">아이디</string>
+    <string name="sign_up_id_guide">5자 이상의 영문 소문자, 숫자만 사용 가능합니다.</string>
+    <string name="sign_up_password">비밀번호</string>
+    <string name="sign_up_password_guide">8자 이상의 영문, 숫자를 사용하세요.</string>
+    <string name="sign_up_password_check">비밀번호 확인</string>
+    <string name="sign_up_password_check_wrong">입력한 정보가 올바르지 않습니다.</string>
+    <string name="sign_up_name">성, 이름</string>
+    <string name="sign_up_name_guide">필수정보입니다.</string>
+    <string name="sign_up_last_name">성</string>
+    <string name="sign_up_first_name">이름</string>
+    <string name="sign_up_email">이메일 주소</string>
+    <string name="sign_up_email_guide">구성원 인증에 사용되는 필수정보입니다.</string>
+    <string name="sign_up_email_postfix">\@snu.ac.kr</string>
+    <string name="sign_up_email_verification">인증번호</string>
+    <string name="sign_up_email_verification_send">인증</string>
+    <string name="sign_up_email_verification_resend"><u>재발송</u></string>
+    <string name="sign_up_email_verification_wrong">인증번호가 올바르지 않습니다.</string>
+    <string name="sign_up_email_verification_check">확인</string>
+    <string name="sign_up_email_verification_remain_time">유효시간 </string>
+    <string name="sign_up_email_verification_remain_time_reset"><u>시간연장</u></string>
+    <string name="sign_up_email_verification_remain_time_minute">분</string>
+    <string name="sign_up_email_verification_remain_time_second">초</string>
+    <string name="sign_up_agree"><u>스누데이 이용약관, 개인정보 수집 및 이용에 모두 동의합니다.</u></string>
+    <string name="sign_up_agree_access_terms">스누데이 이용약관 동의</string>
+    <string name="sign_up_privacy_policy">개인정보 수집 및 이용 동의</string>
+    <string name="sign_up_require">(필수)</string>
+    <string name="sign_up_button">회원가입</string>
+
+
+
     <!-- Root Fragment -->
     <string name="root_schedule">내 일정</string>
     <string name="root_notification">공지사항</string>

@@ -185,7 +185,7 @@
         android:paddingVertical="13dp"
         android:elevation="3dp"
         android:orientation="vertical"
-        android:visibility="visible">
+        android:visibility="gone">
 
         <TextView
             android:id="@+id/text_notification_filter_all"
