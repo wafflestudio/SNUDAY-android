@@ -14,6 +14,7 @@
 
     <!-- SNUDAY -->
     <color name="snuday_blue">#FF457AF6</color>
+    <color name="snuday_blue_selected">#FF255AD6</color>
     <color name="snuday_background_gray">#FFEDEDED</color>
     <color name="snuday_hint_text_gray">#FFB8B8B8</color>
     <color name="snuday_div_line">#FFDDDDDD</color>

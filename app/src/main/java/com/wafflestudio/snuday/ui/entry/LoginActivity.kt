@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.PersistableBundle
 import androidx.appcompat.app.AppCompatActivity
+import com.wafflestudio.snuday.BuildConfig
 import com.wafflestudio.snuday.databinding.ActivityLoginBinding
 import com.wafflestudio.snuday.repository.UserStatusManager
 import com.wafflestudio.snuday.ui.main.RootActivity
@@ -32,6 +33,16 @@ class LoginActivity : AppCompatActivity() {
         Timber.d("LoginActivity")
 
         binding.buttonLogin.setOnClickListener {
+
+            // FIXME : For debug
+            if(BuildConfig.DEBUG) {
+                if (binding.editTextId.text.toString().equals("testing")) {
+                    startActivity(RootActivity.createIntent(this))
+                    finish()
+                    return@setOnClickListener
+                }
+            }
+
             userStatusManager
                 .loginUser(binding.editTextId.text.toString(), binding.editTextPassword.text.toString())
                 .subIoObsMain()

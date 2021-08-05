@@ -10,4 +10,6 @@
     <dimen name="third_line_event_margin">64dp</dimen>
     <dimen name="fourth_line_event_margin">91dp</dimen>
     <dimen name="fifth_line_event_margin">108dp</dimen>
+
+    <dimen name="channel_detail_image_height">210dp</dimen>
 </resources>

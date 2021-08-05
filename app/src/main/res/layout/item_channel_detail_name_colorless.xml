@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/frame_channel_name_colorless">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="31dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:paddingHorizontal="18dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/sf_pro_regular"
+            android:textSize="18dp"
+            android:textColor="@color/black"
+            android:translationY="-1dp"
+            android:text="#" />
+
+        <TextView
+            android:id="@+id/channel_name_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/sf_pro_regular"
+            android:textSize="18dp"
+            android:textColor="@color/black"
+            android:translationY="-1dp"
+            android:layout_marginStart="2dp"
+            tools:text="컴퓨터공학부" />
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

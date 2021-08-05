@@ -133,7 +133,7 @@ class NotificationFragment : Fragment() {
     }
 
     override fun onDestroy() {
-        compositeDisposable.clear()
+        compositeDisposable.dispose()
 
         super.onDestroy()
     }

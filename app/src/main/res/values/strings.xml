@@ -81,6 +81,11 @@
     <!-- Channel Fragment -->
     <string name="channel_app_bar">채널 페이지</string>
 
+    <!-- Channel Detail Fragment -->
+    <string name="channel_detail_notice">공지사항</string>
+    <string name="channel_detail_more">더보기</string>
+    <string name="channel_detail_schedule">채널 일정</string>
+
     <!-- Custom Calendar View -->
     <string name="custom_calendar_sunday">일</string>
     <string name="custom_calendar_monday">월</string>

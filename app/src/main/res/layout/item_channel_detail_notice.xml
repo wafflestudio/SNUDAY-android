@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:fontFamily="@font/sf_pro_regular"
+        android:textSize="15dp"
+        android:textColor="@color/black"
+        tools:text="와플스튜디오 겨울 프로젝트 시작"
+        android:layout_marginTop="10dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:fontFamily="@font/sf_pro_regular"
+        android:textSize="10dp"
+        android:textColor="@color/calendar_weekday_gray"
+        tools:text="12월 14일 (월)"
+        android:layout_marginBottom="10dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/snuday_div_line" />
+
+</LinearLayout>

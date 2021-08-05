@@ -6,10 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.wafflestudio.snuday.BuildConfig
 import com.wafflestudio.snuday.R
 import com.wafflestudio.snuday.databinding.FragmentSearchBinding
+import com.wafflestudio.snuday.ui.main.MainFragmentDirections
 import com.wafflestudio.snuday.utils.showToast
 import com.wafflestudio.snuday.utils.subIoObsMain
 import com.wafflestudio.snuday.utils.visibleOrGone
@@ -69,6 +72,14 @@ class SearchFragment : Fragment() {
         }
 
         binding.searchButton.setOnClickListener {
+
+            if (BuildConfig.DEBUG) {
+                if (binding.editTextSearchQuery.text.toString().equals("test channel")) {
+                    val action = MainFragmentDirections.actionMainFragmentToChannelDetailActivity(0)
+                    findNavController().navigate(action)
+                }
+            }
+
             binding.recommendLayout.visibleOrGone(false)
             binding.searchResultLayout.visibleOrGone(true)
             vm.searchChannel(binding.editTextSearchQuery.text.toString())
@@ -76,8 +87,13 @@ class SearchFragment : Fragment() {
                 .subscribe({
                     searchChannelLayoutManager.scrollToPosition(0)
                 },{
-                    val e = it as HttpException
-                    if (e.code() == 400) showToast(getString(R.string.search_need_more_word))
+                    try {
+                        val exception = it as HttpException
+                        if (exception.code() == 400) showToast(getString(R.string.search_need_more_word))
+                    } catch (error: ClassCastException) {
+                        Timber.e("Error not HttpException")
+                    }
+
                     Timber.e(it)
             }).also { compositeDisposable.add(it) }
         }
