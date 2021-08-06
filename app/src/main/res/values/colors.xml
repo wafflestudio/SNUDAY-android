@@ -18,6 +18,7 @@
     <color name="snuday_background_gray">#FFEDEDED</color>
     <color name="snuday_hint_text_gray">#FFB8B8B8</color>
     <color name="snuday_div_line">#FFDDDDDD</color>
+    <color name="snuday_non_select_gray">#FFFCFCFC</color>
 
     <!-- calendar -->
     <color name="calendar_weekday_gray">#FF6A6A6A</color>

@@ -11,5 +11,8 @@
     <dimen name="fourth_line_event_margin">91dp</dimen>
     <dimen name="fifth_line_event_margin">108dp</dimen>
 
+    <dimen name="channel_list_subscribing_start_x">1dp</dimen>
+    <dimen name="channel_list_managing_start_x">101dp</dimen>
+
     <dimen name="channel_detail_image_height">210dp</dimen>
 </resources>
