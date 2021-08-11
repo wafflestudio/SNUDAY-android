@@ -91,7 +91,7 @@ class NotificationFragment : Fragment() {
         }
 
         binding.buttonSearch.setOnClickListener {
-            vm.searchNotice(binding.editTextSearchFilter.text.toString())
+            vm.searchNotice(binding.editTextSearchQuery.text.toString())
                 .subIoObsMain()
                 .subscribe({ response ->
                     notificationLayoutManager.scrollToPosition(0)
@@ -100,6 +100,20 @@ class NotificationFragment : Fragment() {
                     if (e.code() == 400) showToast(getString(R.string.search_need_more_word))
                     Timber.e(it)
                 }).also { compositeDisposable.add(it) }
+        }
+
+        binding.editTextSearchQuery.setOnEditorActionListener { _, _, _ ->
+            vm.searchNotice(binding.editTextSearchQuery.text.toString())
+                .subIoObsMain()
+                .subscribe({ response ->
+                    notificationLayoutManager.scrollToPosition(0)
+                }, {
+                    val e = it as HttpException
+                    if (e.code() == 400) showToast(getString(R.string.search_need_more_word))
+                    Timber.e(it)
+                }).also { compositeDisposable.add(it) }
+
+            true
         }
 
 

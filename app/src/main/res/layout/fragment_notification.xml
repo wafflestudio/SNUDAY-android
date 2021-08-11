@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:text="@string/notification_app_bar"
             android:textSize="21dp"
-            android:textStyle="bold"
+            android:fontFamily="@font/sf_pro_bold"
             android:textAlignment="center"
             android:textColor="@color/black"
             />
@@ -81,14 +81,18 @@
         </LinearLayout>
 
         <EditText
-            android:id="@+id/edit_text_search_filter"
+            android:id="@+id/edit_text_search_query"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@null"
             android:hint="@string/notification_filter_hint"
             android:textColorHint="@color/snuday_hint_text_gray"
+            android:fontFamily="@font/sf_pro_regular"
             android:textSize="15dp"
+            android:textColor="@color/black"
+            android:imeOptions="actionSearch"
+            android:inputType="text"
             android:layout_marginStart="5dp"/>
 
         <ImageView
@@ -110,17 +114,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
+        android:layout_marginTop="16dp"
         android:gravity="bottom"
         >
 
         <TextView
-
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/sf_pro_bold"
             android:text="@string/notification_subscribed_tag_text"
             android:textSize="18dp"
             android:textColor="@color/black"
-            android:textStyle="bold"
             />
 
         <View
@@ -138,6 +142,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/sf_pro_regular"
                 android:textSize="13dp"
                 android:textColor="@color/black"
                 android:text="@string/notification_filter_setting"

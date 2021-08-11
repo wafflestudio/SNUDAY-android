@@ -5,11 +5,11 @@
     <dimen name="event_text_size">9dp</dimen>
     <dimen name="event_line_spacing">4dp</dimen>
 
-    <dimen name="first_line_event_margin">30dp</dimen>
-    <dimen name="second_line_event_margin">47dp</dimen>
-    <dimen name="third_line_event_margin">64dp</dimen>
-    <dimen name="fourth_line_event_margin">91dp</dimen>
-    <dimen name="fifth_line_event_margin">108dp</dimen>
+    <dimen name="first_line_event_margin">29dp</dimen>
+    <dimen name="second_line_event_margin">46dp</dimen>
+    <dimen name="third_line_event_margin">63dp</dimen>
+    <dimen name="fourth_line_event_margin">80dp</dimen>
+    <dimen name="fifth_line_event_margin">97dp</dimen>
 
     <dimen name="channel_list_subscribing_start_x">1dp</dimen>
     <dimen name="channel_list_managing_start_x">101dp</dimen>

@@ -9,11 +9,12 @@
     <string name="login_password_hint">비밀번호</string>
     <string name="login_button">로그인</string>
     <string name="login_sign_up"><u>회원가입</u></string>
-    <string name="login_find_id"><u>아이디 찾기</u></string>
+    <string name="login_find_id"><u>아이디 / 비밀번호 찾기</u></string>
 
     <!-- SignUp Activity -->
     <string name="sign_up_app_bar">회원가입</string>
     <string name="sign_up_greeting">스누데이에 오신 것을 환영합니다.</string>
+    <string name="sign_up_exclamation_mark">!</string>
     <string name="sign_up_id">아이디</string>
     <string name="sign_up_id_guide">5자 이상의 영문 소문자, 숫자만 사용 가능합니다.</string>
     <string name="sign_up_password">비밀번호</string>
@@ -38,8 +39,8 @@
     <string name="sign_up_email_verification_remain_time_second">초</string>
     <string name="sign_up_agree"><u>스누데이 이용약관, 개인정보 수집 및 이용에 모두 동의합니다.</u></string>
     <string name="sign_up_agree_access_terms">스누데이 이용약관 동의</string>
-    <string name="sign_up_privacy_policy">개인정보 수집 및 이용 동의</string>
-    <string name="sign_up_require">(필수)</string>
+    <string name="sign_up_agree_privacy_policy">개인정보 수집 및 이용 동의</string>
+    <string name="sign_up_require"> (필수)</string>
     <string name="sign_up_button">회원가입</string>
 
     <!-- Root Fragment -->

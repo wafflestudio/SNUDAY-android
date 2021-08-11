@@ -19,13 +19,15 @@
 
         <ImageView
             android:id="@+id/button_back"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
             android:src="@drawable/ic_back_button"
-            android:layout_marginStart="10dp" />
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:padding="10dp" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/sign_up_app_bar"
             android:textSize="21dp"
@@ -52,10 +54,11 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         app:layout_constraintTop_toBottomOf="@id/div_line"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -97,18 +100,58 @@
 
             </LinearLayout>
 
-            <EditText
-                android:id="@+id/edit_text_id"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="43dp"
                 android:background="@drawable/frame_entry_edit_text"
                 android:layout_marginHorizontal="20dp"
-                android:fontFamily="@font/sf_pro_regular"
-                android:textSize="15dp"
-                android:paddingHorizontal="15dp"
-                android:maxLines="1"
-                android:maxLength="32"
-                android:textColor="@color/black" />
+                android:gravity="center_vertical">
+                <EditText
+                    android:id="@+id/edit_text_id"
+                    android:layout_width="0dp"
+                    android:layout_height="43dp"
+                    android:layout_weight="1"
+                    android:background="@color/transparent"
+                    android:fontFamily="@font/sf_pro_regular"
+                    android:textSize="15dp"
+                    android:paddingHorizontal="15dp"
+                    android:maxLines="1"
+                    android:maxLength="32"
+                    android:textColor="@color/black" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/warning_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="20dp">
+
+                    <View
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:background="@drawable/frame_sign_up_warning"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="@string/sign_up_exclamation_mark"
+                        android:textSize="14dp"
+                        android:fontFamily="@font/sf_pro_regular"
+                        android:textColor="@color/white"
+                        android:gravity="center"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </LinearLayout>
+
+
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -135,19 +178,60 @@
 
             </LinearLayout>
 
-            <EditText
-                android:id="@+id/edit_text_password"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="43dp"
                 android:background="@drawable/frame_entry_edit_text"
                 android:layout_marginHorizontal="20dp"
-                android:fontFamily="@font/sf_pro_regular"
-                android:textSize="15dp"
-                android:paddingHorizontal="15dp"
-                android:maxLines="1"
-                android:maxLength="32"
-                android:textColor="@color/black"
-                android:inputType="textPassword" />
+                android:gravity="center_vertical">
+
+                <EditText
+                    android:id="@+id/edit_text_password"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/transparent"
+                    android:fontFamily="@font/sf_pro_regular"
+                    android:textSize="15dp"
+                    android:paddingHorizontal="15dp"
+                    android:maxLines="1"
+                    android:maxLength="32"
+                    android:textColor="@color/black"
+                    android:inputType="textPassword" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/warning_password"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="20dp">
+
+                    <View
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:background="@drawable/frame_sign_up_warning"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="@string/sign_up_exclamation_mark"
+                        android:textSize="14dp"
+                        android:fontFamily="@font/sf_pro_regular"
+                        android:textColor="@color/white"
+                        android:gravity="center"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </LinearLayout>
+
+
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -177,19 +261,60 @@
 
             </LinearLayout>
 
-            <EditText
-                android:id="@+id/edit_text_password_check"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="43dp"
-                android:background="@drawable/frame_entry_edit_text"
                 android:layout_marginHorizontal="20dp"
-                android:fontFamily="@font/sf_pro_regular"
-                android:textSize="15dp"
-                android:paddingHorizontal="15dp"
-                android:maxLines="1"
-                android:maxLength="32"
-                android:textColor="@color/black"
-                android:inputType="textPassword" />
+                android:background="@drawable/frame_entry_edit_text"
+                android:gravity="center_vertical">
+
+                <EditText
+                    android:id="@+id/edit_text_password_check"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/transparent"
+                    android:fontFamily="@font/sf_pro_regular"
+                    android:textSize="15dp"
+                    android:paddingHorizontal="15dp"
+                    android:maxLines="1"
+                    android:maxLength="32"
+                    android:textColor="@color/black"
+                    android:inputType="textPassword" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/warning_password_check"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="20dp">
+
+                    <View
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:background="@drawable/frame_sign_up_warning"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="@string/sign_up_exclamation_mark"
+                        android:textSize="14dp"
+                        android:fontFamily="@font/sf_pro_regular"
+                        android:textColor="@color/white"
+                        android:gravity="center"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </LinearLayout>
+
+
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -222,37 +347,115 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp">
 
-                <EditText
-                    android:id="@+id/edit_text_last_name"
+                <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="43dp"
                     android:layout_weight="0.5"
                     android:layout_marginEnd="3dp"
                     android:background="@drawable/frame_entry_edit_text"
-                    android:fontFamily="@font/sf_pro_regular"
-                    android:textSize="15dp"
-                    android:paddingHorizontal="15dp"
-                    android:maxLines="1"
-                    android:maxLength="15"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/snuday_hint_text_gray"
-                    android:hint="@string/sign_up_last_name" />
+                    android:gravity="center_vertical">
 
-                <EditText
-                    android:id="@+id/edit_text_first_name"
+                    <EditText
+                        android:id="@+id/edit_text_last_name"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@color/transparent"
+                        android:fontFamily="@font/sf_pro_regular"
+                        android:textSize="15dp"
+                        android:paddingHorizontal="15dp"
+                        android:maxLines="1"
+                        android:maxLength="15"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/snuday_hint_text_gray"
+                        android:hint="@string/sign_up_last_name" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/warning_last_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="20dp">
+
+                        <View
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:background="@drawable/frame_sign_up_warning"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="@string/sign_up_exclamation_mark"
+                            android:textSize="14dp"
+                            android:fontFamily="@font/sf_pro_regular"
+                            android:textColor="@color/white"
+                            android:gravity="center"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"/>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="43dp"
                     android:layout_weight="0.5"
                     android:layout_marginStart="3dp"
                     android:background="@drawable/frame_entry_edit_text"
-                    android:fontFamily="@font/sf_pro_regular"
-                    android:textSize="15dp"
-                    android:paddingHorizontal="15dp"
-                    android:maxLines="1"
-                    android:maxLength="15"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/snuday_hint_text_gray"
-                    android:hint="@string/sign_up_first_name" />
+                    android:gravity="center_vertical">
+
+                    <EditText
+                        android:id="@+id/edit_text_first_name"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@color/transparent"
+                        android:fontFamily="@font/sf_pro_regular"
+                        android:textSize="15dp"
+                        android:paddingHorizontal="15dp"
+                        android:maxLines="1"
+                        android:maxLength="15"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/snuday_hint_text_gray"
+                        android:hint="@string/sign_up_first_name" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/warning_first_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="20dp">
+
+                        <View
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:background="@drawable/frame_sign_up_warning"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="@string/sign_up_exclamation_mark"
+                            android:textSize="14dp"
+                            android:fontFamily="@font/sf_pro_regular"
+                            android:textColor="@color/white"
+                            android:gravity="center"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"/>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </LinearLayout>
 
             </LinearLayout>
 
@@ -313,13 +516,14 @@
                     android:id="@+id/button_email_verification_send"
                     android:layout_width="74dp"
                     android:layout_height="35dp"
-                    android:background="@drawable/frame_sign_up_check"
+                    android:background="@drawable/frame_sign_up_check_ripple"
                     android:fontFamily="@font/sf_pro_regular"
                     android:textSize="15dp"
                     android:gravity="center"
                     android:textColor="@color/snuday_blue"
                     android:layout_marginEnd="4dp"
                     android:layout_marginStart="7dp"
+                    android:clickable="true"
                     android:text="@string/sign_up_email_verification_send" />
 
             </LinearLayout>
@@ -345,6 +549,7 @@
                     android:textSize="10dp"
                     android:textColor="@color/red"
                     android:text="@string/sign_up_email_verification_wrong"
+                    android:visibility="gone"
                     tools:visibility="visible"
                     android:layout_marginStart="12dp" />
 
@@ -375,11 +580,12 @@
                     android:id="@+id/button_email_verification_check"
                     android:layout_width="74dp"
                     android:layout_height="35dp"
-                    android:background="@drawable/frame_sign_up_check"
+                    android:background="@drawable/frame_sign_up_check_ripple"
                     android:fontFamily="@font/sf_pro_regular"
                     android:textSize="15dp"
                     android:gravity="center"
                     android:textColor="@color/snuday_blue"
+                    android:clickable="true"
                     android:layout_marginEnd="4dp"
                     android:layout_marginStart="7dp"
                     android:text="@string/sign_up_email_verification_check" />
@@ -425,6 +631,8 @@
                     android:textSize="13dp"
                     android:textColor="@color/snuday_hint_text_gray"
                     android:fontFamily="@font/sf_pro_regular"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:clickable="true"
                     android:text="@string/sign_up_email_verification_resend" />
 
                 <TextView
@@ -435,17 +643,123 @@
                     android:textColor="@color/snuday_hint_text_gray"
                     android:fontFamily="@font/sf_pro_regular"
                     android:text="@string/sign_up_email_verification_remain_time_reset"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:clickable="true"
                     android:layout_marginEnd="22dp"
                     android:layout_marginStart="23dp"/>
 
 
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="35dp"
+                android:layout_marginTop="40dp"
+                android:gravity="center_vertical">
 
+                <ImageView
+                    android:id="@+id/button_check_all"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_check" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="13dp"
+                    android:fontFamily="@font/sf_pro_regular"
+                    android:textColor="@color/black"
+                    android:text="@string/sign_up_agree"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="10dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="35dp"
+                android:layout_marginTop="28dp"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:id="@+id/button_check_access_terms"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_check" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="13dp"
+                    android:fontFamily="@font/sf_pro_regular"
+                    android:textColor="@color/black"
+                    android:text="@string/sign_up_agree_access_terms"
+                    android:layout_marginStart="8dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="13dp"
+                    android:fontFamily="@font/sf_pro_regular"
+                    android:textColor="@color/snuday_blue"
+                    android:text="@string/sign_up_require"
+                    android:layout_marginStart="5dp"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="35dp"
+                android:layout_marginTop="8dp"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:id="@+id/button_check_privacy_policy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_check" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="13dp"
+                    android:fontFamily="@font/sf_pro_regular"
+                    android:textColor="@color/black"
+                    android:text="@string/sign_up_agree_privacy_policy"
+                    android:layout_marginStart="8dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="13dp"
+                    android:fontFamily="@font/sf_pro_regular"
+                    android:textColor="@color/snuday_blue"
+                    android:text="@string/sign_up_require"
+                    android:layout_marginStart="5dp"
+                    />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/button_sign_up"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:background="@drawable/frame_entry_button"
+                android:layout_marginTop="23dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginBottom="60dp"
+                android:fontFamily="@font/sf_pro_bold"
+                android:textColor="@color/white"
+                android:text="@string/sign_up_button"
+                android:gravity="center"
+                android:textSize="18dp" />
 
         </LinearLayout>
 
     </ScrollView>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

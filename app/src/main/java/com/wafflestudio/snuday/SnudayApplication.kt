@@ -20,9 +20,9 @@ class SnudayApplication : Application() {
 
         if (BuildConfig.DEBUG) {
             Timber.plant(Timber.DebugTree())
-            val sp = getSharedPreferences(BuildConfig.PREF_KEY, Context.MODE_PRIVATE)
-            sp.edit().remove(PrefKey.accessToken).remove(PrefKey.refreshToken).apply()
-            Timber.d("remove pref")
+//            val sp = getSharedPreferences(BuildConfig.PREF_KEY, Context.MODE_PRIVATE)
+//            sp.edit().remove(PrefKey.accessToken).remove(PrefKey.refreshToken).apply()
+//            Timber.d("remove pref")
         }
     }
 }

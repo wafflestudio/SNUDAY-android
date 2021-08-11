@@ -146,7 +146,7 @@ class CustomCalendarView : ConstraintLayout {
         }
 
         override fun onBindViewHolder(holder: CustomCalendarWeekViewHolder, position: Int) {
-            holder.render(weeks[position])
+            holder.render(weeks[position], events)
         }
 
         override fun getItemCount() = weeks.size
@@ -167,7 +167,7 @@ class CustomCalendarView : ConstraintLayout {
             binding.day7
         )
 
-        fun render(weekData: List<Int>) {
+        fun render(weekData: List<Int>, eventData: List<Event>) {
             Timber.d("rendering ${weekData}")
             weekData.forEachIndexed { idx, day ->
                 days[idx].apply {

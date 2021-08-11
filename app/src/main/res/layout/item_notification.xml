@@ -41,7 +41,7 @@
         android:layout_marginTop="5dp"
         android:maxLines="1"
         android:ellipsize="end"
-        tools:text="와플스튜디오 겨울 프로젝트가 시작됩니다! 와플스튜디오 겨울 프로젝트가 시작됩니다! 와플스튜디오 겨울 프로젝트가 시작됩니다! 와플스튜디오 겨울 프로젝트가 시작됩니다!"
+        tools:text="12월 14일 (월)"
         android:textSize="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

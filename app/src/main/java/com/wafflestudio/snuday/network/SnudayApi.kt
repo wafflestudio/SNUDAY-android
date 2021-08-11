@@ -2,13 +2,30 @@ package com.wafflestudio.snuday.network
 
 import com.wafflestudio.snuday.model.Channel
 import com.wafflestudio.snuday.model.Notice
+import com.wafflestudio.snuday.model.User
 import com.wafflestudio.snuday.network.dto.*
 import com.wafflestudio.snuday.ui.main.search.SearchFilter
+import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Single
 import retrofit2.http.*
 
 
 interface SnudayApi {
+
+    @POST("users/mail/send/")
+    fun sendEmailVerification(
+        @Body body: SendEmailVerificationRequest
+    ): Single<String>
+
+    @POST("users/mail/verify/")
+    fun checkEmailVerification(
+        @Body body: CheckEmailVerificationRequest
+    ): Single<String>
+
+    @POST("users/")
+    fun signUpUser(
+        @Body body: SignUpRequest
+    ): Single<User>
 
     @POST("users/login/")
     fun loginUser(

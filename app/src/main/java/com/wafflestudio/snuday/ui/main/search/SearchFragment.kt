@@ -86,7 +86,7 @@ class SearchFragment : Fragment() {
                 .subIoObsMain()
                 .subscribe({
                     searchChannelLayoutManager.scrollToPosition(0)
-                },{
+                }, {
                     try {
                         val exception = it as HttpException
                         if (exception.code() == 400) showToast(getString(R.string.search_need_more_word))
@@ -96,6 +96,28 @@ class SearchFragment : Fragment() {
 
                     Timber.e(it)
             }).also { compositeDisposable.add(it) }
+        }
+
+        binding.editTextSearchQuery.setOnEditorActionListener { _, _, _ ->
+
+            binding.recommendLayout.visibleOrGone(false)
+            binding.searchResultLayout.visibleOrGone(true)
+            vm.searchChannel(binding.editTextSearchQuery.text.toString())
+                .subIoObsMain()
+                .subscribe({
+                    searchChannelLayoutManager.scrollToPosition(0)
+                }, {
+                    try {
+                        val exception = it as HttpException
+                        if (exception.code() == 400) showToast(getString(R.string.search_need_more_word))
+                    } catch (error: ClassCastException) {
+                        Timber.e("Error not HttpException")
+                    }
+
+                    Timber.e(it)
+                }).also { compositeDisposable.add(it) }
+
+            true
         }
 
         binding.textSearchFilterAll.setOnClickListener {
