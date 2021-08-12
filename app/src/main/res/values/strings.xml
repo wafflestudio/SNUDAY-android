@@ -76,6 +76,7 @@
     <string name="search_channel_subscriber">구독자 </string>
     <string name="search_channel_subscriber_count">명</string>
     <string name="search_need_more_word">검색어를 두 글자 이상 입력해주세요.</string>
+    <string name="search_no_result">검색 결과가 없습니다.</string>
 
     <!-- Channel Fragment -->
     <string name="channel_app_bar">채널 페이지</string>
@@ -83,6 +84,7 @@
     <string name="channel_managing_channel">내 채널</string>
     <string name="channel_channel_subscriber">구독자 </string>
     <string name="channel_channel_subscriber_count">명</string>
+    <string name="channel_subscribe">구독</string>
 
     <!-- Channel Detail Fragment -->
     <string name="channel_detail_notice">공지사항</string>

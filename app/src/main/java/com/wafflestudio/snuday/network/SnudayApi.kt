@@ -52,6 +52,9 @@ interface SnudayApi {
     @GET("users/me/subscribing_channels")
     fun fetchSubscribingChannels(): Single<List<Channel>>
 
+    @GET("users/me/managing_channels")
+    fun fetchManagingChannels(): Single<List<Channel>>
+
     @GET("channels/recommend/")
     fun fetchRecommendChannels(): Single<List<Channel>>
 

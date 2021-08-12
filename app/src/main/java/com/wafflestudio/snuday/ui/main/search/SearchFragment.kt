@@ -80,6 +80,11 @@ class SearchFragment : Fragment() {
                 }
             }
 
+            if (binding.editTextSearchQuery.text.toString().length < 2) {
+                showToast(getString(R.string.search_need_more_word))
+                return@setOnClickListener
+            }
+
             binding.recommendLayout.visibleOrGone(false)
             binding.searchResultLayout.visibleOrGone(true)
             vm.searchChannel(binding.editTextSearchQuery.text.toString())
@@ -89,12 +94,14 @@ class SearchFragment : Fragment() {
                 }, {
                     try {
                         val exception = it as HttpException
-                        if (exception.code() == 400) showToast(getString(R.string.search_need_more_word))
+                        if (exception.code() == 400) {
+                            showToast(getString(R.string.search_no_result))
+                        }
                     } catch (error: ClassCastException) {
                         Timber.e("Error not HttpException")
                     }
 
-                    Timber.e(it)
+                    Timber.d(it)
             }).also { compositeDisposable.add(it) }
         }
 
@@ -171,7 +178,9 @@ class SearchFragment : Fragment() {
                     if (lastVisibleDataPosition >= totalChannelData - 1) {
                         if (!vm.checkLoadable()) {
                             vm.loadNextSearchChannel().subIoObsMain()
-                                .subscribe({},{Timber.e(it)})
+                                .subscribe({},{
+                                    Timber.e(it)
+                                })
                                 .also { compositeDisposable.add(it) }
                         }
                     }

@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import com.wafflestudio.snuday.model.Channel
 import com.wafflestudio.snuday.network.dto.SearchChannelResponse
 import com.wafflestudio.snuday.repository.ChannelDataRepository
+import com.wafflestudio.snuday.utils.filterPersonalChannel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.Single
@@ -49,7 +50,7 @@ class SearchViewModel @Inject constructor(
             .doOnSuccess { response ->
                 if (response.next == null) isEnded = true
                 searchCursor = response.next
-                _searchedChannelList.onNext(response.channels)
+                _searchedChannelList.onNext(response.channels.filterPersonalChannel())
             }.doFinally { isLoading = false }
     }
 
@@ -61,8 +62,7 @@ class SearchViewModel @Inject constructor(
             .doOnSuccess { response ->
                 if (response.next == null) isEnded = true
                 searchCursor = response.next
-                _searchedChannelList.onNext(_searchedChannelList.value.plus(response.channels))
+                _searchedChannelList.onNext(_searchedChannelList.value.plus(response.channels.filterPersonalChannel()))
             }.doFinally { isLoading = false }
     }
-
 }

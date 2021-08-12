@@ -52,6 +52,7 @@
             android:textColor="@color/calendar_weekday_gray"/>
 
         <TextView
+            android:id="@+id/text_subscriber_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/sf_pro_regular"
@@ -91,10 +92,10 @@
         app:layout_goneMarginStart="8dp" />
 
     <ImageView
-        android:id="@+id/icon_subscribe_star"
+        android:id="@+id/button_edit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_star"
+        android:src="@drawable/ic_modify"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginBottom="18dp"

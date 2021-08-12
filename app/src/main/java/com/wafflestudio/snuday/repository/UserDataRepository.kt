@@ -16,4 +16,6 @@ class UserDataRepository @Inject constructor(
         snudayApi.searchNotices(type.type, q, cursor ?: "")
 
     fun fetchSubscribingChannel() = snudayApi.fetchSubscribingChannels()
+
+    fun fetchManagingChannel() = snudayApi.fetchManagingChannels()
 }
