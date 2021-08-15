@@ -16,4 +16,6 @@ class ChannelDataRepository @Inject constructor(
         snudayApi.searchChannels(type.type, q, cursor ?: "")
 
     fun fetchNoticeById(channelId: Int, noticeId: Int) = snudayApi.fetchNoticeById(channelId, noticeId)
+
+    fun fetchChannelById(channelId: Int) = snudayApi.fetchChannelById(channelId)
 }

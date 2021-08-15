@@ -49,7 +49,7 @@ class ManagingChannelViewHolder(private val binding: ItemChannelManagingChannelB
         data.image?.let { url -> channelImageView.setImage(url) }
         officialIcon.visibleOrGone(data.isOfficial)
         privateIcon.isSelected = data.isPrivate
-        subscriberCountText.text = data.subCount.toString()
+        subscriberCountText.text = " ${data.subCount}"
     }
 
     fun setChannelOnClickListener(listener: (Int) -> (Unit)) {

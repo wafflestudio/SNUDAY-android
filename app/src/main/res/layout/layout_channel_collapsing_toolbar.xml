@@ -23,7 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="210dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/example" />
+            android:src="@drawable/image_channel_background_1" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -58,8 +58,8 @@
                 android:layout_marginTop="20dp">
 
                 <ImageView
-                    android:src="@drawable/example"
                     android:id="@+id/image_channel"
+                    android:src="@drawable/example"
                     android:scaleType="centerCrop"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"/>
@@ -86,6 +86,7 @@
                 android:layout_marginStart="5dp" />
 
             <TextView
+                android:id="@+id/text_channel_detail"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/tag_channel_name"
@@ -100,11 +101,16 @@
                 android:text="..."
                 tools:text="맛있는 서비스가 탄생하는 곳, 서울대학교 컴퓨터공학부 웹/앱 개발 동아리 와플스튜디오입니다! 맛있는 서비스가 탄생하는 곳, 서울대학교 컴퓨터공학부 웹/앱 개발 동아리 와플스튜디오입니다!" />
 
-            <ImageView
-                android:id="@+id/icon_subscribe_star_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_star"
+            <TextView
+                android:id="@+id/button_subscribe_1"
+                android:layout_width="54dp"
+                android:layout_height="26dp"
+                android:background="@drawable/frame_subscribe_button_ripple"
+                android:fontFamily="@font/sf_pro_regular"
+                android:textSize="15dp"
+                android:textColor="@color/color_subscribe_button_selector"
+                android:text="@string/channel_subscribe"
+                android:gravity="center"
                 app:layout_constraintBottom_toBottomOf="@id/tag_channel_name"
                 app:layout_constraintTop_toTopOf="@id/tag_channel_name"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -146,11 +152,16 @@
                     android:fontFamily="@font/sf_pro_bold"
                     android:textColor="@color/black" />
 
-                <ImageView
-                    android:id="@+id/icon_subscribe_star_2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_star"
+                <TextView
+                    android:id="@+id/button_subscribe_2"
+                    android:layout_width="54dp"
+                    android:layout_height="26dp"
+                    android:background="@drawable/frame_subscribe_button_ripple"
+                    android:fontFamily="@font/sf_pro_regular"
+                    android:textSize="15dp"
+                    android:textColor="@color/color_subscribe_button_selector"
+                    android:text="@string/channel_subscribe"
+                    android:gravity="center"
                     android:layout_marginEnd="20dp" />
 
             </LinearLayout>

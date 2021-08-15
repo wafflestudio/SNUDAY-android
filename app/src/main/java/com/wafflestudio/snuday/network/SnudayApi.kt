@@ -71,4 +71,8 @@ interface SnudayApi {
         @Path(value = "notice_id") noticeId: Int
     ): Single<Notice>
 
+    @GET("channels/{channel_id}/")
+    fun fetchChannelById(
+        @Path(value = "channel_id")channelId: Int
+    ): Single<Channel>
 }

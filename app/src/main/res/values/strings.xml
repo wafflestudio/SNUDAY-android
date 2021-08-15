@@ -82,7 +82,7 @@
     <string name="channel_app_bar">채널 페이지</string>
     <string name="channel_subscribing_channel">구독 채널</string>
     <string name="channel_managing_channel">내 채널</string>
-    <string name="channel_channel_subscriber">구독자 </string>
+    <string name="channel_channel_subscriber">구독자</string>
     <string name="channel_channel_subscriber_count">명</string>
     <string name="channel_subscribe">구독</string>
 

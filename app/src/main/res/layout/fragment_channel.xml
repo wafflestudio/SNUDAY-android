@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:text="@string/channel_app_bar"
             android:textSize="21dp"
-            android:textStyle="bold"
+            android:fontFamily="@font/sf_pro_bold"
             android:textAlignment="center"
             android:textColor="@color/black"
             />
