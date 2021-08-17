@@ -76,14 +76,19 @@
         android:layout_marginStart="4dp"
         app:layout_goneMarginStart="8dp" />
 
-    <ImageView
-        android:id="@+id/icon_subscribe_star"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_star"
+    <TextView
+        android:id="@+id/button_subscribe"
+        android:layout_width="54dp"
+        android:layout_height="26dp"
+        android:background="@drawable/frame_subscribe_button_ripple"
+        android:fontFamily="@font/sf_pro_regular"
+        android:textSize="15dp"
+        android:textColor="@color/color_subscribe_button_selector"
+        android:text="@string/channel_subscribe"
+        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="18dp"
+        android:layout_marginBottom="14dp"
         android:layout_marginEnd="20dp" />
 
     <View

@@ -84,6 +84,18 @@
                 android:layout_marginTop="10dp" />
 
             <TextView
+                android:id="@+id/text_notice_created_at"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sf_pro_regular"
+                android:textSize="15dp"
+                android:textColor="@color/black"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="18dp"
+                tools:text="2020년 12월 14일 (월) 18:00" />
+
+
+            <TextView
                 android:id="@+id/text_writer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -92,7 +104,7 @@
                 android:fontFamily="@font/sf_pro_regular"
                 tools:text="김미승"
                 android:layout_marginStart="35dp"
-                android:layout_marginTop="18dp" />
+                android:layout_marginTop="6dp" />
 
             <View
                 android:layout_width="match_parent"

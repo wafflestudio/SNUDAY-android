@@ -11,6 +11,7 @@ import androidx.navigation.fragment.navArgs
 import com.wafflestudio.snuday.R
 import com.wafflestudio.snuday.databinding.FragmentNoticeDetailBinding
 import com.wafflestudio.snuday.utils.subIoObsMain
+import com.wafflestudio.snuday.utils.toPrettyString
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import timber.log.Timber
@@ -40,11 +41,12 @@ class NoticeDetailFragment : Fragment() {
             .subIoObsMain()
             .subscribe({ notice ->
                  binding.apply {
-                     binding.textTitle.text = notice.title
-                     binding.textContents.text = notice.contents
+                     textTitle.text = notice.title
+                     textContents.text = notice.contents
+                     textNoticeCreatedAt.text = notice.createdAt.toPrettyString()
 
                      // TODO: 2021/07/22 사용자 이름 가져오는 API
-                     binding.textWriter.text = "* TODO *"
+                     textWriter.text = "* TODO *"
                  }
             }, {
                 Timber.d(it)
