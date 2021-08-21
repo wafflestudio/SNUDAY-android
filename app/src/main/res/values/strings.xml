@@ -108,6 +108,10 @@
     <string name="channel_save">저장하기</string>
     <string name="channel_delete">삭제하기</string>
 
+    <string name="channel_create_notice">공지 생성</string>
+    <string name="channel_notice_title">제목</string>
+    <string name="channel_notice_description">내용</string>
+
     <!-- Channel Detail Fragment -->
     <string name="channel_detail_notice">공지사항</string>
     <string name="channel_detail_more">더보기</string>

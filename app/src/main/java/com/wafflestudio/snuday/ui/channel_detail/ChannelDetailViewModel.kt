@@ -79,6 +79,8 @@ class ChannelDetailViewModel @Inject constructor(
 
     fun fetchChannelData(channelId: Int) = channelDataRepository.fetchChannelById(channelId).doOnSuccess { channelData = it }
 
+    fun postNotice(channelId: Int, title: String, contents: String) = channelDataRepository.postNotice(channelId, title, contents)
+
     fun subscribeChannel(channelId: Int) = channelDataRepository.subscribeChannel(channelId)
     fun unsubscribeChannel(channelId: Int) = channelDataRepository.unsubscribeChannel(channelId)
 

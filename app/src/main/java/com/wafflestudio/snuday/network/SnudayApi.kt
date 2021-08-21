@@ -74,10 +74,16 @@ interface SnudayApi {
         @Body body: PatchChannelRequest
     ): Single<Channel>
 
-    @DELETE("channels/{channel_id}")
+    @DELETE("channels/{channel_id}/")
     fun deleteChannel(
         @Path("channel_id") channelId: Int
     ): Single<Response<Unit>>
+
+    @POST("channels/{channel_id}/notices/")
+    fun postNotice(
+        @Path("channel_id") channelId: Int,
+        @Body body: PostNoticeRequest
+    ): Single<Notice>
 
     @GET("channels/recommend/")
     fun fetchRecommendChannels(): Single<List<Channel>>

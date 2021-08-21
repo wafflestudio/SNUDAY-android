@@ -48,6 +48,7 @@ class NotificationFragment : Fragment() {
 
         notificationAdapter = NotificationAdapter(
             onNoticeClickListener = { channelId, channelName, noticeId ->
+                vm.inDetail = true
                 val action = MainFragmentDirections.actionMainFragmentToNoticeDetailFragment(channelName, channelId, noticeId)
                 findNavController().navigate(action)
             }
@@ -136,8 +137,9 @@ class NotificationFragment : Fragment() {
         })
 
         vm.fetchChannelData().subIoObsMain().subscribe({}, { Timber.d(it) }).also { compositeDisposable.add(it) }
-        if (!vm.alreadyCreated) {
-            vm.alreadyCreated = true
+        if (vm.inDetail) {
+            vm.inDetail = false
+        } else {
             vm.fetchNotice().subIoObsMain().subscribe({}, { Timber.d(it) }).also { compositeDisposable.add(it) }
         }
 

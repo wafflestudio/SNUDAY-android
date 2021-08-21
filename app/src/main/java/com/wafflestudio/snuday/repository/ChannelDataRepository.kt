@@ -2,10 +2,7 @@ package com.wafflestudio.snuday.repository
 
 import com.wafflestudio.snuday.db.ChannelColorDao
 import com.wafflestudio.snuday.network.SnudayApi
-import com.wafflestudio.snuday.network.dto.PatchChannelRequest
-import com.wafflestudio.snuday.network.dto.PatchEventRequest
-import com.wafflestudio.snuday.network.dto.PostChannelRequest
-import com.wafflestudio.snuday.network.dto.PostEventRequest
+import com.wafflestudio.snuday.network.dto.*
 import com.wafflestudio.snuday.preference.SnudayPrefObjects
 import com.wafflestudio.snuday.ui.main.search.SearchFilter
 import java.time.LocalDateTime
@@ -101,6 +98,12 @@ class ChannelDataRepository @Inject constructor(
             if (hasTime) dueDateTime.toLocalTime() else null
         )
     )
+
+    fun postNotice(
+        channelId: Int,
+        title: String,
+        contents: String
+    ) = snudayApi.postNotice(channelId, PostNoticeRequest(title, contents))
 
     fun deleteEvent(channelId: Int, eventId: Int) = snudayApi.deleteEvent(channelId, eventId)
 }

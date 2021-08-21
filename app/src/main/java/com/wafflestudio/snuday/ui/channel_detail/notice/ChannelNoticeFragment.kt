@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.wafflestudio.snuday.databinding.FragmentChannelNoticeBinding
 import com.wafflestudio.snuday.ui.channel_detail.ChannelDetailViewModel
 import com.wafflestudio.snuday.utils.subIoObsMain
+import com.wafflestudio.snuday.utils.visibleOrGone
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import timber.log.Timber
@@ -83,6 +84,12 @@ class ChannelNoticeFragment : Fragment() {
             Timber.d(it)
         }).also { compositeDisposable.add(it) }
 
+        vm.checkManaging(args.channelId).subIoObsMain().subscribe({
+            binding.buttonAddNotice.visibleOrGone(it)
+        }, {
+            Timber.d(it)
+        }).also { compositeDisposable.add(it) }
+
         vm.fetchChannelNotice(args.channelId).subIoObsMain().subscribe({}, {
             Timber.d(it)
         }).also { compositeDisposable.add(it) }
@@ -108,7 +115,10 @@ class ChannelNoticeFragment : Fragment() {
             }
         })
 
-
+        binding.buttonAddNotice.setOnClickListener {
+            val action = ChannelNoticeFragmentDirections.actionChannelNoticeFragmentToChannelAddNoticeFragment(false, 0, args.channelId)
+            findNavController().navigate(action)
+        }
     }
 
 }

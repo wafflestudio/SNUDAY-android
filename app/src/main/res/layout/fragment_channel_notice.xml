@@ -102,6 +102,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:src="@drawable/ic_floating_action_button_add"
+        android:visibility="gone"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp" />
 

@@ -29,6 +29,8 @@ class NotificationViewModel @Inject constructor(
     private var isEnded: Boolean = false
     private var isLoading: Boolean = false
 
+    var inDetail: Boolean = false
+
     var alreadyCreated: Boolean = false
 
     fun checkLoadable() = !isEnded && !isLoading
