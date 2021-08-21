@@ -4,6 +4,7 @@
     <dimen name="event_height">15dp</dimen>
     <dimen name="event_text_size">9dp</dimen>
     <dimen name="event_line_spacing">4dp</dimen>
+    <dimen name="event_horizontal_padding">4dp</dimen>
 
     <dimen name="first_line_event_margin">29dp</dimen>
     <dimen name="second_line_event_margin">46dp</dimen>
@@ -15,4 +16,7 @@
     <dimen name="channel_list_managing_start_x">101dp</dimen>
 
     <dimen name="channel_detail_image_height">210dp</dimen>
+
+    <dimen name="dialog_width">305dp</dimen>
+    <dimen name="dialog_event_detail_width">263dp</dimen>
 </resources>

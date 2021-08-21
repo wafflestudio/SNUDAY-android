@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="305dp"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="40dp"
+    android:background="@drawable/frame_snuday_dialog"
+    android:elevation="4dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_close_button"
+            android:visibility="invisible"
+            android:layout_marginStart="12dp"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/sf_pro_bold"
+            android:textColor="@color/black"
+            android:layout_weight="1"
+            android:textSize="18dp"
+            android:textAlignment="center"
+            android:text="@string/schedule_dialog_my_event_modify" />
+
+        <ImageView
+            android:id="@+id/button_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_close_button"
+            android:layout_marginEnd="12dp"
+            android:layout_marginVertical="10dp" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/snuday_div_line" />
+
+    <EditText
+        android:id="@+id/edit_text_title"
+        android:layout_width="match_parent"
+        android:layout_height="43dp"
+        android:background="@drawable/frame_edit_text"
+        android:fontFamily="@font/sf_pro_regular"
+        android:textSize="18dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/snuday_hint_text_gray"
+        android:hint="@string/schedule_dialog_title"
+        android:paddingHorizontal="17dp"
+        android:layout_marginHorizontal="28dp"
+        android:layout_marginTop="25dp"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginHorizontal="35dp"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/sf_pro_regular"
+            android:textColor="@color/black"
+            android:textSize="15dp"
+            android:text="@string/schedule_dialog_start_date"
+            />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/text_start_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/sf_pro_regular"
+            android:textColor="@color/snuday_hint_text_gray"
+            android:textSize="15dp"
+            android:foreground="?attr/selectableItemBackground"
+            tools:text="1월 14일 (목)" />
+
+        <TextView
+            android:id="@+id/text_start_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/sf_pro_regular"
+            android:textColor="@color/snuday_hint_text_gray"
+            android:textSize="15dp"
+            android:visibility="gone"
+            android:foreground="?attr/selectableItemBackground"
+            tools:visibility="visible"
+            tools:text=" 오전 9:00" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/snuday_hint_text_gray"
+        android:layout_marginHorizontal="36dp"
+        android:layout_marginVertical="5dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginHorizontal="35dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/sf_pro_regular"
+            android:textColor="@color/black"
+            android:textSize="15dp"
+            android:text="@string/schedule_dialog_due_date"
+            />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/text_due_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/sf_pro_regular"
+            android:textColor="@color/snuday_hint_text_gray"
+            android:textSize="15dp"
+            android:foreground="?attr/selectableItemBackground"
+            tools:text="1월 15일 (금)" />
+
+        <TextView
+            android:id="@+id/text_due_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/sf_pro_regular"
+            android:textColor="@color/snuday_hint_text_gray"
+            android:textSize="15dp"
+            android:visibility="gone"
+            android:foreground="?attr/selectableItemBackground"
+            tools:visibility="visible"
+            tools:text=" 오후 6:00" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/snuday_hint_text_gray"
+        android:layout_marginHorizontal="36dp"
+        android:layout_marginVertical="5dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginHorizontal="36dp"
+        android:gravity="center_vertical|end"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/sf_pro_regular"
+            android:textColor="@color/black"
+            android:textSize="13dp"
+            android:text="@string/schedule_dialog_all_day" />
+
+        <Switch
+            android:id="@+id/switch_all_day"
+            android:layout_width="wrap_content"
+            android:layout_height="18dp"
+            android:track="@drawable/frame_switch_track"
+            android:thumb="@drawable/frame_switch_thumb"
+            android:layout_marginStart="5dp" />
+
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/edit_text_memo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="130dp"
+        android:background="@drawable/frame_edit_text"
+        android:layout_marginHorizontal="28dp"
+        android:layout_marginTop="18dp"
+        android:fontFamily="@font/sf_pro_regular"
+        android:textColor="@color/black"
+        android:textSize="15dp"
+        android:textColorHint="@color/snuday_hint_text_gray"
+        android:hint="@string/schedule_dialog_memo"
+        android:gravity="top"
+        android:maxLength="100"
+        android:inputType="textMultiLine"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="14dp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/snuday_hint_text_gray"
+        android:layout_marginHorizontal="29dp"
+        android:layout_marginVertical="22dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginBottom="25dp"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/button_delete"
+            android:layout_width="0dp"
+            android:layout_height="43dp"
+            android:layout_weight="1"
+            android:background="@drawable/frame_button_thick_white_ripple"
+            android:fontFamily="@font/sf_pro_bold"
+            android:textColor="@color/snuday_hint_text_gray"
+            android:textSize="18dp"
+            android:layout_marginEnd="5dp"
+            android:text="@string/schedule_dialog_delete"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/button_modify"
+            android:layout_width="0dp"
+            android:layout_height="43dp"
+            android:layout_weight="1"
+            android:background="@drawable/frame_button_thick"
+            android:fontFamily="@font/sf_pro_bold"
+            android:textColor="@color/white"
+            android:textSize="18dp"
+            android:text="@string/schedule_dialog_save"
+            android:gravity="center"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>

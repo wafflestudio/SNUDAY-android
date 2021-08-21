@@ -12,6 +12,8 @@ data class Channel(
     @Json(name = "is_private") val isPrivate: Boolean,
     @Json(name = "is_official") val isOfficial: Boolean,
     @Json(name = "is_personal") val isPersonal: Boolean,
-    @Json(name = "subscribers_count") val subCount: Int,
-    @Json(name = "managers") val managerList: List<User>
+    @Json(name = "subscribers_count") val subCount: Int?,
+    @Json(name = "managers") val managerList: List<User>,
+    @Json(name = "channel_color") var channelColor: ChannelColor?,
+    @Json(name = "awaiter") var awaiter: List<User>?
 )

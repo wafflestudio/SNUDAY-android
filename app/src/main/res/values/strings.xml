@@ -48,11 +48,21 @@
     <string name="root_notification">공지사항</string>
     <string name="root_search">검색</string>
     <string name="root_channel">채널</string>
-    <string name="root_mypage">더보기</string>
+    <string name="root_mypage">My Page</string>
 
-    <!-- Schedules Fragment -->
-    <string name="schedules_filter_setting">필터 설정</string>
-    <string name="schedules_today">오늘</string>
+    <!-- Schedule Fragment -->
+    <string name="schedule_filter_setting">필터 설정</string>
+    <string name="schedule_today">오늘</string>
+    <string name="schedule_dialog_my_event_create">내 일정 생성</string>
+    <string name="schedule_dialog_my_event_modify">내 일정 수정</string>
+    <string name="schedule_dialog_title">제목</string>
+    <string name="schedule_dialog_start_date">시작일</string>
+    <string name="schedule_dialog_due_date">종료일</string>
+    <string name="schedule_dialog_all_day">하루종일</string>
+    <string name="schedule_dialog_memo">메모</string>
+    <string name="schedule_dialog_save">저장하기</string>
+    <string name="schedule_dialog_delete">삭제하기</string>
+    <string name="schedule_dialog_filter_color">필터 색상 설정</string>
 
     <!-- Notification Fragment -->
     <string name="notification_app_bar">공지</string>
@@ -86,10 +96,39 @@
     <string name="channel_channel_subscriber_count">명</string>
     <string name="channel_subscribe">구독</string>
 
+    <string name="channel_create">채널 생성</string>
+    <string name="channel_modify">채널 수정</string>
+    <string name="channel_public_channel">공개 채널</string>
+    <string name="channel_private_channel">비공개 채널</string>
+    <string name="channel_channel_name">채널명</string>
+    <string name="channel_channel_description">채널 소개</string>
+    <string name="channel_manager_maintain">매니저 관리</string>
+    <string name="channel_manager_search">매니저로 추가할 멤버 검색</string>
+    <string name="channel_manager_add">추가</string>
+    <string name="channel_save">저장하기</string>
+    <string name="channel_delete">삭제하기</string>
+
     <!-- Channel Detail Fragment -->
     <string name="channel_detail_notice">공지사항</string>
     <string name="channel_detail_more">더보기</string>
     <string name="channel_detail_schedule">채널 일정</string>
+
+    <!-- Awaiter Fragment -->
+    <string name="awaiter_app_bar">구독 요청</string>
+    <string name="awaiter_accept">수락</string>
+    <string name="awaiter_reject">거절</string>
+
+    <!-- My Page Fragment -->
+    <string name="my_page_app_bar">My Page</string>
+    <string name="my_page_account">계정</string>
+    <string name="my_page_username_notation">(user id)</string>
+    <string name="my_page_id_change">아이디 변경</string>
+    <string name="my_page_password_change">비밀번호 변경</string>
+    <string name="my_page_service_info">서비스 정보</string>
+    <string name="my_page_version_info">버전 정보</string>
+    <string name="my_page_access_term">서비스 이용약관</string>
+    <string name="my_page_privacy_policy">개인정보 처리방침</string>
+    
 
     <!-- Custom Calendar View -->
     <string name="custom_calendar_sunday">일</string>
@@ -99,5 +138,16 @@
     <string name="custom_calendar_thursday">목</string>
     <string name="custom_calendar_friday">금</string>
     <string name="custom_calendar_saturday">토</string>
+
+    <!-- Color Name -->
+    <string name="color_name_snutt_1">석류</string>
+    <string name="color_name_snutt_2">감귤</string>
+    <string name="color_name_snutt_3">들국</string>
+    <string name="color_name_snutt_4">완두</string>
+    <string name="color_name_snutt_5">비취</string>
+    <string name="color_name_snutt_6">지중해</string>
+    <string name="color_name_snutt_7">하늘</string>
+    <string name="color_name_snutt_8">라벤더</string>
+    <string name="color_name_snutt_9">자수정</string>
 
 </resources>

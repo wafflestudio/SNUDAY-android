@@ -44,7 +44,7 @@ class MainFragment : Fragment() {
                 1 -> ResourcesCompat.getDrawable(resources, R.drawable.ic_tabitem_notification, null)
                 2 -> ResourcesCompat.getDrawable(resources, R.drawable.ic_tabitem_search, null)
                 3 -> ResourcesCompat.getDrawable(resources, R.drawable.ic_tabitem_channel, null)
-                4 -> ResourcesCompat.getDrawable(resources, R.drawable.ic_tabitem_schedule, null)
+                4 -> ResourcesCompat.getDrawable(resources, R.drawable.ic_tabitem_mypage, null)
                 else -> throw IllegalStateException("$i tab is not allowed!")
             }
             tab.text = when (i) {

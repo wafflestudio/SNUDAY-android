@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.wafflestudio.snuday.R
 import com.wafflestudio.snuday.databinding.FragmentNoticeDetailBinding
+import com.wafflestudio.snuday.utils.getResource
 import com.wafflestudio.snuday.utils.subIoObsMain
 import com.wafflestudio.snuday.utils.toPrettyString
 import dagger.hilt.android.AndroidEntryPoint
@@ -28,7 +29,7 @@ class NoticeDetailFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
-        FragmentNoticeDetailBinding.inflate(inflater, container, false)
+        binding = FragmentNoticeDetailBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -44,13 +45,16 @@ class NoticeDetailFragment : Fragment() {
                      textTitle.text = notice.title
                      textContents.text = notice.contents
                      textNoticeCreatedAt.text = notice.createdAt.toPrettyString()
-
-                     // TODO: 2021/07/22 사용자 이름 가져오는 API
-                     textWriter.text = "* TODO *"
+                     textWriter.text = notice.writerName
                  }
             }, {
                 Timber.d(it)
             }).also { compositeDisposable.add(it) }
+
+        vm.getChannelColorById(channelId = args.channelId)
+            .subscribe({
+                 it?.let { binding.tagChannel.cardView.setCardBackgroundColor(it.getResource(requireContext())) }
+            }, {Timber.d(it)}).also { compositeDisposable.add(it) }
 
         binding.buttonBack.setOnClickListener {
             findNavController().popBackStack()

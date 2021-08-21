@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="263dp"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="40dp"
+    android:background="@drawable/frame_snuday_dialog">
+
+    <include
+        android:id="@+id/tag"
+        layout="@layout/item_channel_name"
+        android:layout_marginTop="32dp"
+        android:layout_marginStart="31dp"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"/>
+
+    <TextView
+        android:id="@+id/text_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/sf_pro_font_family"
+        android:textStyle="bold"
+        android:textSize="18dp"
+        android:textColor="@color/black"
+        tools:text="2021학년도 1학기 복적 및 재입학 신청"
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:id="@+id/text_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/sf_pro_font_family"
+        android:textStyle="normal"
+        android:textSize="15dp"
+        android:textColor="@color/black"
+        tools:text="2020년 12월 14일 (월)\n~ 2021년 1월 15일 (금)"
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginTop="22dp"
+        android:lineHeight="17dp"/>
+
+    <TextView
+        android:id="@+id/text_memo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/sf_pro_font_family"
+        android:textStyle="normal"
+        android:textSize="13dp"
+        android:textColor="@color/black"
+        android:maxLines="5"
+        android:ellipsize="end"
+        tools:text="언덕 가득 아무 파란 나는 새워 이제 별 그리고 까닭입니다. 무성할 묻힌 잠, 거외다. 차 하나에 헤일 소학교 불러 지나고 어머님, 청춘이 봅니다. 별 옥 강아지, 이네들은 별 이름자를 많은 봅니다. 내 가을 새워 나는 벌레는 된 아스라히 시인의 봅니다. 별 너무나 강아지, 별빛이 아침이 헤는 계십니다. 그리고 계집애들의 아침이 다 하나에 있습니다.
+
+오는 내 옥 이름을 무성할 덮어 듯합니다. 프랑시스 사람들의 패, 봅니다. 까닭이요, 언덕 없이 가을 잔디가 소녀들의 시인의 버리었습니다. 겨울이 별이 사랑과 버리었습니다. 했던 새워 벌써 이름과 잔디가 별빛이 그리고 위에 같이 봅니다. 잔디가 무덤 것은 잠, 차 어머님, 옥 벌레는 봅니다. 책상을 사랑과 못 자랑처럼 거외다.
+
+내일 나는 멀리 동경과 당신은 같이 별에도 봅니다. 프랑시스 한 동경과 비둘기, 벌써 옥 이름과, 겨울이 있습니다. 소녀들의 별빛이 나는 하늘에는 겨울이 까닭입니다. 위에 어머님, 다하지 무성할 이름을 계십니다. 부끄러운 사랑과 나는 쉬이 봅니다. 슬퍼하는 내일 사람들의 걱정도 경, 벌써 소녀들의 당신은 내 있습니다."
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginTop="29dp"
+        android:layout_marginBottom="22dp"
+        android:lineHeight="17dp"/>
+
+    <ImageView
+        android:id="@+id/button_modify"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_modify_blue"
+        android:visibility="gone"
+        android:layout_marginTop="7dp"
+        android:layout_gravity="end"
+        android:layout_marginEnd="22dp"
+        android:layout_marginBottom="22dp" />
+
+
+
+</LinearLayout>

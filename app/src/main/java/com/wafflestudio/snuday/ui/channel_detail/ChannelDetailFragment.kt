@@ -9,6 +9,7 @@ import android.widget.ImageView
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.google.android.material.appbar.AppBarLayout
 import com.wafflestudio.snuday.R
@@ -28,6 +29,9 @@ class ChannelDetailFragment : Fragment() {
     private lateinit var binding: FragmentChannelDetailBinding
     private val args: ChannelDetailFragmentArgs by navArgs()
 
+    private lateinit var channelDetailRecentNoticeAdapter: ChannelDetailRecentNoticeAdapter
+    private lateinit var channelDetailRecentNoticeLayoutManager: LinearLayoutManager
+
     private val imageHeight: Float by lazy { resources.getDimension(R.dimen.channel_detail_image_height) }
     private val compositeDisposable = CompositeDisposable()
 
@@ -42,6 +46,22 @@ class ChannelDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val subButtonList = listOf(
+            binding.channelCollapsingToolbar.buttonSubscribe1,
+            binding.channelCollapsingToolbar.buttonSubscribe2
+        )
+
+        channelDetailRecentNoticeAdapter = ChannelDetailRecentNoticeAdapter { noticeId ->
+            vm.channelData?.let {
+                val action = ChannelDetailFragmentDirections.actionChannelDetailFragmentToChannelNoticeDetailFragment(it.name, it.id, noticeId)
+                findNavController().navigate(action)
+            }
+        }
+        channelDetailRecentNoticeLayoutManager = LinearLayoutManager(requireContext())
+        binding.recyclerViewRecentNotice.apply {
+            adapter = channelDetailRecentNoticeAdapter
+            layoutManager = channelDetailRecentNoticeLayoutManager
+        }
 
         binding.channelCollapsingToolbar.imageChannelBackground.setRandomBackground()
 
@@ -59,6 +79,13 @@ class ChannelDetailFragment : Fragment() {
             findNavController().popBackStack()
         }
 
+        binding.buttonNoticeMore.setOnClickListener {
+            vm.channelData?.let {
+                val action = ChannelDetailFragmentDirections.actionChannelDetailFragmentToChannelNoticeFragment(it.name, it.id)
+                findNavController().navigate(action)
+            }
+        }
+
         vm.fetchChannelData(args.channelId).subIoObsMain()
             .subscribe({ channelData ->
                 channelData.image?.let {
@@ -68,11 +95,54 @@ class ChannelDetailFragment : Fragment() {
                 binding.channelCollapsingToolbar.textChannelTitleToolbar.text = channelData.name
                 binding.channelCollapsingToolbar.textChannelDetail.text = channelData.description
 
-
             }, {
-
+                Timber.d(it)
             }).also { compositeDisposable.add(it) }
 
+        vm.fetchRecentNotice(args.channelId).subIoObsMain()
+            .subscribe({
+                channelDetailRecentNoticeAdapter.recentNoticeList = it
+                channelDetailRecentNoticeAdapter.notifyDataSetChanged()
+            }, {
+            Timber.d(it)
+        }).also { compositeDisposable.add(it) }
+
+        vm.checkSubscribing(args.channelId).subIoObsMain()
+            .subscribe({ isSubscribing ->
+                subButtonList.forEach { it.isSelected = isSubscribing }
+                       }, {
+                Timber.d(it)
+            }).also { compositeDisposable.add(it) }
+
+        subButtonList.forEach { textView ->
+            textView.setOnClickListener {
+                if (textView.isSelected) {
+                    vm.unsubscribeChannel(args.channelId).subIoObsMain()
+                        .subscribe({
+                            vm.checkSubscribing(args.channelId).subIoObsMain()
+                                .subscribe({ isSubscribing ->
+                                    subButtonList.forEach { it.isSelected = isSubscribing }
+                                }, {
+                                    Timber.d(it)
+                                }).also { compositeDisposable.add(it) }
+                        }, {
+                            Timber.d(it)
+                        }).also { compositeDisposable.add(it) }
+                } else {
+                    vm.subscribeChannel(args.channelId).subIoObsMain()
+                        .subscribe({
+                            vm.checkSubscribing(args.channelId).subIoObsMain()
+                                .subscribe({ isSubscribing ->
+                                    subButtonList.forEach { it.isSelected = isSubscribing }
+                                }, {
+                                    Timber.d(it)
+                                }).also { compositeDisposable.add(it) }
+                        }, {
+                            Timber.d(it)
+                        }).also { compositeDisposable.add(it) }
+                }
+            }
+        }
     }
 
     override fun onDestroy() {

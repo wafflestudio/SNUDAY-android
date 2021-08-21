@@ -59,7 +59,7 @@
 
                 <ImageView
                     android:id="@+id/image_channel"
-                    android:src="@drawable/example"
+                    android:src="@drawable/ic_channel_image_sample_full"
                     android:scaleType="centerCrop"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"/>

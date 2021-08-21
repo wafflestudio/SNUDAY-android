@@ -48,14 +48,75 @@ class SearchFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        recommendChannelAdapter = RecommendChannelAdapter()
+        binding.recommendLayout.visibleOrGone(true)
+        Timber.d("ONVIEWCREATED")
+
+        recommendChannelAdapter = RecommendChannelAdapter(
+            onChannelClickListener = { channelId ->
+                val action = MainFragmentDirections.actionMainFragmentToChannelDetailFragment(channelId)
+                findNavController().navigate(action)
+            },
+            onSubscribeClickListener = { channelId, isSubscribed ->
+                if (isSubscribed) {
+                    vm.unsubscribeChannel(channelId).subIoObsMain()
+                        .subscribe({
+                             refreshSubscribingChannel()
+                        }, {
+                            Timber.d(it)
+                        }).also { compositeDisposable.add(it) }
+                } else {
+                    vm.subscribeChannel(channelId).subIoObsMain()
+                        .subscribe({
+                            refreshSubscribingChannel()
+                        }, {
+                            Timber.d(it)
+                        }).also { compositeDisposable.add(it) }
+                }
+            }
+        )
         recommendChannelLayoutManager = LinearLayoutManager(requireContext())
         binding.recyclerViewRecommendChannel.apply {
             adapter = recommendChannelAdapter
             layoutManager = recommendChannelLayoutManager
         }
 
-        searchChannelAdapter = SearchChannelAdapter()
+        searchChannelAdapter = SearchChannelAdapter(
+            onChannelClickListener = { channelId, isPrivate ->
+                if (isPrivate) {
+                    showToast("비공개 채널은 구독자만 접근하실 수 있습니다.\n이미 구독중이신 경우 채널 탭을 이용해주세요.")
+                } else {
+                    val action = MainFragmentDirections.actionMainFragmentToChannelDetailFragment(channelId)
+                    findNavController().navigate(action)
+                }
+            },
+            onSubscribeClickListener = { channelId, isSubscribed, isPrivate ->
+                if (isSubscribed) {
+                    vm.unsubscribeChannel(channelId).subIoObsMain()
+                        .subscribe({
+                            refreshSubscribingChannel()
+                        }, {
+                            Timber.d(it)
+                        }).also { compositeDisposable.add(it) }
+                } else {
+                    if (isPrivate) {
+                        vm.subscribeChannel(channelId).subIoObsMain()
+                            .subscribe({
+                                showToast("구독 신청이 되었습니다!")
+                                refreshSubscribingChannel()
+                            }, {
+                                Timber.d(it)
+                            }).also { compositeDisposable.add(it) }
+                    } else {
+                        vm.subscribeChannel(channelId).subIoObsMain()
+                            .subscribe({
+                                refreshSubscribingChannel()
+                            }, {
+                                Timber.d(it)
+                            }).also { compositeDisposable.add(it) }
+                    }
+                }
+            }
+        )
         searchChannelLayoutManager = LinearLayoutManager(requireContext())
         binding.recyclerViewSearchedChannel.apply {
             adapter = searchChannelAdapter
@@ -75,7 +136,7 @@ class SearchFragment : Fragment() {
 
             if (BuildConfig.DEBUG) {
                 if (binding.editTextSearchQuery.text.toString().equals("test channel")) {
-                    val action = MainFragmentDirections.actionMainFragmentToChannelDetailActivity(0)
+                    val action = MainFragmentDirections.actionMainFragmentToChannelDetailFragment(0)
                     findNavController().navigate(action)
                 }
             }
@@ -161,11 +222,26 @@ class SearchFragment : Fragment() {
         vm.observeSearchedChannel()
             .subIoObsMain()
             .subscribe ({ channelList ->
-            searchChannelAdapter.channelList = channelList
-            searchChannelAdapter.notifyDataSetChanged()
-        }, {
-            Timber.e(it)
-        })
+                if (channelList.size > 0) {
+                    binding.recommendLayout.visibleOrGone(false)
+                    binding.searchResultLayout.visibleOrGone(true)
+                }
+                searchChannelAdapter.channelList = channelList
+                searchChannelAdapter.notifyDataSetChanged()
+            }, {
+                Timber.e(it)
+            }).also { compositeDisposable.add(it) }
+
+        vm.subscribingChannelList()
+            .subIoObsMain()
+            .subscribe({ channelList ->
+                searchChannelAdapter.subscribingList = channelList
+                recommendChannelAdapter.subscribingList = channelList
+                searchChannelAdapter.notifyDataSetChanged()
+                recommendChannelAdapter.notifyDataSetChanged()
+            }, {
+                Timber.e(it)
+            }).also { compositeDisposable.add(it) }
 
         binding.recyclerViewSearchedChannel
             .addOnScrollListener(object : RecyclerView.OnScrollListener() {
@@ -176,7 +252,8 @@ class SearchFragment : Fragment() {
                     val lastVisibleDataPosition = searchChannelLayoutManager.findLastCompletelyVisibleItemPosition()
 
                     if (lastVisibleDataPosition >= totalChannelData - 1) {
-                        if (!vm.checkLoadable()) {
+                        Timber.d("AAA")
+                        if (vm.checkLoadable()) {
                             vm.loadNextSearchChannel().subIoObsMain()
                                 .subscribe({},{
                                     Timber.e(it)
@@ -190,10 +267,22 @@ class SearchFragment : Fragment() {
 
     }
 
+    override fun onResume() {
+        super.onResume()
+
+        refreshSubscribingChannel()
+    }
+
     override fun onDestroy() {
-        compositeDisposable.clear()
+        compositeDisposable.dispose()
 
         super.onDestroy()
+    }
+
+    private fun refreshSubscribingChannel() {
+        vm.loadSubscribingChannel()
+            .subIoObsMain()
+            .subscribe({ Timber.d("loaded subscribing channel")}, { Timber.e(it) }).also { compositeDisposable.add(it) }
     }
 
     private fun makeFilterLayoutGone() {

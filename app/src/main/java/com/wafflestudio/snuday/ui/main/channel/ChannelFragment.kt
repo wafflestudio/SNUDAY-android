@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.wafflestudio.snuday.R
 import com.wafflestudio.snuday.databinding.FragmentChannelBinding
 import com.wafflestudio.snuday.ui.main.MainFragmentDirections
+import com.wafflestudio.snuday.ui.main.channel.dialog.AddChannelDialog
+import com.wafflestudio.snuday.ui.main.channel.dialog.ModifyChannelDialog
 import com.wafflestudio.snuday.utils.subIoObsMain
 import com.wafflestudio.snuday.utils.visibleOrGone
 import dagger.hilt.android.AndroidEntryPoint
@@ -41,27 +43,53 @@ class ChannelFragment : Fragment() {
         return binding.root
     }
 
+    override fun onResume() {
+        super.onResume()
+
+        vm.loadSubscribingChannel().subIoObsMain().subscribe({}, {
+            Timber.d(it)
+        }).also { compositeDisposable.add(it) }
+
+        vm.loadManagingChannel().subIoObsMain().subscribe({}, {
+            Timber.d(it)
+        }).also { compositeDisposable.add(it) }
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         subscribingChannelAdapter = SubscribingChannelAdapter(
             channelOnClickListener = { channelId ->
-                val action = MainFragmentDirections.actionMainFragmentToChannelDetailActivity(channelId)
+                val action = MainFragmentDirections.actionMainFragmentToChannelDetailFragment(channelId)
                 findNavController().navigate(action)
             },
             subscribeButtonOnClickListener = { channelId ->
-                // TODO: 2021/08/12
+                vm.unsubscribeChannel(channelId)
+                    .subIoObsMain()
+                    .subscribe({
+                        refreshSubscribingChannel()
+                }, {
+                    Timber.d(it)
+                }).also { compositeDisposable.add(it) }
             }
         )
         subscribingChannelLayoutManager = LinearLayoutManager(requireContext())
 
         managingChannelAdapter = ManagingChannelAdapter(
             channelOnClickListener =  { channelId ->
-                val action = MainFragmentDirections.actionMainFragmentToChannelDetailActivity(channelId)
+                val action = MainFragmentDirections.actionMainFragmentToChannelDetailFragment(channelId)
                 findNavController().navigate(action)
             },
-            editButtonOnClickListener = { channelId ->
-                // TODO: 2021/08/12
+            editButtonOnClickListener = { channel ->
+                val dialog = ModifyChannelDialog(channel)
+                dialog.setOnDialogDismissListener {
+                    vm.loadManagingChannel().subIoObsMain().subscribe({}, {Timber.d(it)}).also { compositeDisposable.add(it) }
+                }
+                dialog.show(childFragmentManager, "modify_channel")
+            },
+            awaiterButtonOnClickListener = { channel ->
+                val action = MainFragmentDirections.actionMainFragmentToAwaiterFragment(channel.id)
+                findNavController().navigate(action)
             }
         )
         managingChannelLayoutManager = LinearLayoutManager(requireContext())
@@ -89,9 +117,13 @@ class ChannelFragment : Fragment() {
             }).also { compositeDisposable.add(it) }
         }
 
-        vm.loadSubscribingChannel().subIoObsMain().subscribe({}, {
-            Timber.d(it)
-        }).also { compositeDisposable.add(it) }
+        binding.buttonAddChannelFloating.setOnClickListener {
+            val dialog = AddChannelDialog()
+            dialog.setOnDialogDismissListener {
+                vm.loadManagingChannel().subIoObsMain().subscribe({}, { Timber.d(it) }).also { compositeDisposable.add(it) }
+            }
+            dialog.show(childFragmentManager, "add_channel")
+        }
 
         vm.whichChannelList().subscribe { channelListInfo ->
             renderChannelList(channelListInfo)
@@ -100,12 +132,27 @@ class ChannelFragment : Fragment() {
         vm.observeSubscribingChannel().observeOn(AndroidSchedulers.mainThread()).subscribe {
             subscribingChannelAdapter.channelList = it
             subscribingChannelAdapter.notifyDataSetChanged()
+            subscribingChannelLayoutManager.scrollToPosition(0)
         }.also { compositeDisposable.add(it) }
 
-        vm.observeManagingChannel().observeOn(AndroidSchedulers.mainThread()).subscribe {
-            managingChannelAdapter.channelList = it
+        vm.observeManagingChannel().observeOn(AndroidSchedulers.mainThread()).subscribe ({
+            managingChannelAdapter.channelList = it.toMutableList()
+            it.forEach { channel ->
+                vm.getAwaiter(channel.id).subIoObsMain().subscribe({ awaiterList ->
+                    managingChannelAdapter.channelList.find { remain -> remain.id == channel.id }?.let { it.awaiter = awaiterList }
+                    managingChannelAdapter.notifyDataSetChanged()
+                }, { Timber.d(it) }).also { compositeDisposable.add(it) }
+            }
+
             managingChannelAdapter.notifyDataSetChanged()
-        }.also { compositeDisposable.add(it) }
+            managingChannelLayoutManager.scrollToPosition(0)
+        }, { Timber.d(it) }).also { compositeDisposable.add(it) }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+
+        compositeDisposable.dispose()
     }
 
     private fun renderChannelList(channelListInfo: ChannelListInfo) {
@@ -127,6 +174,12 @@ class ChannelFragment : Fragment() {
                 binding.lineShowChannelSelecting.x = resources.getDimension(R.dimen.channel_list_managing_start_x)
             }
         }
+    }
+
+    private fun refreshSubscribingChannel() {
+        vm.loadSubscribingChannel().subIoObsMain().subscribe({}, {
+            Timber.d(it)
+        }).also { compositeDisposable.add(it) }
     }
 
     enum class ChannelListInfo {

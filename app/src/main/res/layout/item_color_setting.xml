@@ -1,0 +1,48 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:clickable="true"
+    android:foreground="?attr/selectableItemBackground"
+    android:layout_width="match_parent"
+    android:layout_height="44dp"
+    android:orientation="horizontal"
+    android:gravity="center"
+    android:paddingStart="38dp"
+    android:paddingEnd="32dp">
+
+    <View
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:background="@drawable/frame_color_base" />
+
+    <View
+        android:id="@+id/icon_showing_color"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:background="@color/snutt_color_1" />
+
+    <TextView
+        android:id="@+id/text_color_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/sf_pro_font_family"
+        android:textSize="15dp"
+        android:textColor="@color/black"
+        android:textStyle="normal"
+        android:layout_marginStart="15dp"
+        tools:text="석류" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1" />
+
+    <ImageView
+        android:id="@+id/icon_check"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        tools:visibility="visible"
+        android:src="@drawable/ic_color_check" />
+
+</LinearLayout>

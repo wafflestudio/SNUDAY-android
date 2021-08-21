@@ -43,6 +43,7 @@ class SubscribingChannelViewHolder(private val binding: ItemChannelSubscribingCh
     private val officialIcon = binding.iconOfficial
     private val privateIcon = binding.iconPrivate
     private val subscriberCountText = binding.textSubscriberCount
+    private val subscribeButton = binding.buttonSubscribe
 
     private var channelId: Int = -1
 
@@ -54,6 +55,7 @@ class SubscribingChannelViewHolder(private val binding: ItemChannelSubscribingCh
         officialIcon.visibleOrGone(data.isOfficial)
         privateIcon.isSelected = data.isPrivate
         subscriberCountText.text = " ${data.subCount}"
+        subscribeButton.isSelected = true
     }
 
     fun setChannelOnClickListener(listener: (Int) -> (Unit)) {

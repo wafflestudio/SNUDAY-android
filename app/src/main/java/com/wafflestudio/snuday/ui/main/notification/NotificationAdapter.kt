@@ -1,9 +1,13 @@
 package com.wafflestudio.snuday.ui.main.notification
 
+import android.content.Context
+import android.graphics.drawable.GradientDrawable
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.wafflestudio.snuday.databinding.ItemNotificationBinding
+import com.wafflestudio.snuday.model.ChannelColor
 import com.wafflestudio.snuday.utils.getInflater
+import com.wafflestudio.snuday.utils.getResource
 
 class NotificationAdapter(
     private val onNoticeClickListener: (Int, String, Int) -> (Unit)
@@ -13,7 +17,7 @@ class NotificationAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NotificationViewHolder {
         val binding = ItemNotificationBinding.inflate(parent.getInflater(), parent, false)
-        return NotificationViewHolder(binding)
+        return NotificationViewHolder(binding, parent.context)
     }
 
     override fun onBindViewHolder(holder: NotificationViewHolder, position: Int) {
@@ -28,16 +32,18 @@ class NotificationAdapter(
         val channelName: String,
         val title: String,
         val channelId: Int,
-        val contents: String
+        val contents: String,
+        val channelColor: ChannelColor?
     )
 }
 
-class NotificationViewHolder(binding: ItemNotificationBinding) : RecyclerView.ViewHolder(binding.root) {
+class NotificationViewHolder(binding: ItemNotificationBinding, private val parentContext: Context) : RecyclerView.ViewHolder(binding.root) {
 
     private val layout = binding.root
     private val channelNameText = binding.tagChannel.channelNameText
     private val titleText = binding.textTitle
     private val contentText = binding.textContents
+    private val channelTag = binding.tagChannel
 
     fun render(
         notice: NotificationAdapter.NotificationItem,
@@ -49,5 +55,6 @@ class NotificationViewHolder(binding: ItemNotificationBinding) : RecyclerView.Vi
         channelNameText.text = notice.channelName
         titleText.text = notice.title
         contentText.text = notice.contents
+        channelTag.cardView.setCardBackgroundColor(notice.channelColor.getResource(parentContext))
     }
 }

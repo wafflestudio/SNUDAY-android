@@ -18,7 +18,7 @@
         android:layout_marginStart="20dp">
 
         <ImageView
-            android:src="@color/snuday_background_gray"
+            android:src="@drawable/ic_channel_image_sample_full"
             android:id="@+id/image_channel"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
@@ -90,6 +90,33 @@
         app:layout_constraintStart_toEndOf="@id/icon_official"
         android:layout_marginStart="4dp"
         app:layout_goneMarginStart="8dp" />
+
+    <ImageView
+        android:id="@+id/button_check_awaiter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_awaiter"
+        app:layout_constraintEnd_toStartOf="@id/button_edit"
+        app:layout_constraintBottom_toBottomOf="@id/button_edit"
+        app:layout_constraintTop_toTopOf="@id/button_edit"
+        android:visibility="gone"
+        tools:visibility="visible"
+        android:layout_marginEnd="12dp" />
+
+    <View
+        android:id="@+id/ic_awaiter_alarm"
+        android:layout_width="5dp"
+        android:layout_height="5dp"
+        android:background="@drawable/ic_notification_alarm_red_circle"
+        app:layout_constraintTop_toTopOf="@id/button_check_awaiter"
+        app:layout_constraintBottom_toTopOf="@id/button_check_awaiter"
+        app:layout_constraintEnd_toEndOf="@id/button_check_awaiter"
+        app:layout_constraintStart_toEndOf="@id/button_check_awaiter"
+        android:visibility="gone"
+        tools:visibility="visible"
+        />
+
+
 
     <ImageView
         android:id="@+id/button_edit"

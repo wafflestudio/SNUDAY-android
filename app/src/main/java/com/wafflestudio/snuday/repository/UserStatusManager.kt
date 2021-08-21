@@ -41,4 +41,6 @@ class UserStatusManager @Inject constructor(
     fun sendEmailVerification(emailPrefix: String) = snudayApi.sendEmailVerification(SendEmailVerificationRequest(emailPrefix))
 
     fun checkEmailVerification(emailPrefix: String, code: String) = snudayApi.checkEmailVerification(CheckEmailVerificationRequest(emailPrefix, code))
+
+    fun getMyData() = snudayApi.getMyData()
 }

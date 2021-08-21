@@ -7,13 +7,15 @@ import com.wafflestudio.snuday.model.Channel
 import com.wafflestudio.snuday.utils.getInflater
 import com.wafflestudio.snuday.utils.setImage
 import com.wafflestudio.snuday.utils.visibleOrGone
+import timber.log.Timber
 
 class ManagingChannelAdapter(
     private val channelOnClickListener: (Int) -> (Unit),
-    private val editButtonOnClickListener: (Int) -> (Unit)
+    private val editButtonOnClickListener: (Channel) -> (Unit),
+    private val awaiterButtonOnClickListener: (Channel) -> (Unit)
 ) : RecyclerView.Adapter<ManagingChannelViewHolder>() {
 
-    var channelList = listOf<Channel>()
+    var channelList = mutableListOf<Channel>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ManagingChannelViewHolder {
         val binding = ItemChannelManagingChannelBinding.inflate(parent.getInflater(), parent, false)
@@ -25,6 +27,7 @@ class ManagingChannelAdapter(
             render(channelList[position])
             setChannelOnClickListener(channelOnClickListener)
             setEditButtonOnClickListener(editButtonOnClickListener)
+            setAwaiterButtonOnClickListener(awaiterButtonOnClickListener)
         }
     }
 
@@ -41,9 +44,22 @@ class ManagingChannelViewHolder(private val binding: ItemChannelManagingChannelB
     private val subscriberCountText = binding.textSubscriberCount
 
     private var channelId: Int = -1
+    private var channel: Channel? = null
 
     fun render(data: Channel) {
+
+        binding.buttonCheckAwaiter.visibleOrGone(false)
+        binding.icAwaiterAlarm.visibleOrGone(false)
         channelId = data.id
+        channel = data
+
+        Timber.d("${data.name} have awaiter ${data.awaiter?.size}")
+
+        data.awaiter?.let { if(it.isNotEmpty()) {
+            binding.buttonCheckAwaiter.visibleOrGone(true)
+            binding.icAwaiterAlarm.visibleOrGone(true)
+        }
+        }
 
         channelNameTextView.text = data.name
         data.image?.let { url -> channelImageView.setImage(url) }
@@ -58,9 +74,19 @@ class ManagingChannelViewHolder(private val binding: ItemChannelManagingChannelB
         }
     }
 
-    fun setEditButtonOnClickListener(listener: (Int) -> Unit) {
-        binding.buttonEdit.setOnClickListener {
-            listener.invoke(channelId)
+    fun setEditButtonOnClickListener(listener: (Channel) -> Unit) {
+        channel?.let { channel ->
+            binding.buttonEdit.setOnClickListener {
+                listener.invoke(channel)
+            }
+        }
+    }
+
+    fun setAwaiterButtonOnClickListener(listener: (Channel) -> Unit) {
+        channel?.let { channel ->
+            binding.buttonCheckAwaiter.setOnClickListener {
+                listener.invoke(channel)
+            }
         }
     }
 }

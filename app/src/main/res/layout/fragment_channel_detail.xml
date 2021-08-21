@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.channel_detail.ChannelDetailFragment">
+    tools:context=".ui.channel_detail.ChannelDetailFragment"
+    android:background="@color/white">
 
     <include
         android:id="@+id/channel_collapsing_toolbar"
@@ -97,6 +98,7 @@
                     android:layout_marginHorizontal="20dp" />
 
                 <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_view_recent_notice"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     tools:listitem="@layout/item_channel_detail_notice"

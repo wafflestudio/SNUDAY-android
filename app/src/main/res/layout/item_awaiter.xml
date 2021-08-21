@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingVertical="18dp">
+
+        <TextView
+            android:id="@+id/text_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/sf_pro_font_family"
+            android:textColor="@color/black"
+            android:textSize="15dp"
+            android:textStyle="normal"
+            android:layout_marginStart="40dp"
+            tools:text="mieseung" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/button_accept"
+            android:layout_width="54dp"
+            android:layout_height="26dp"
+            android:layout_marginEnd="15dp"
+            android:background="@drawable/frame_subscribe_button_selected"
+            android:fontFamily="@font/sf_pro_regular"
+            android:gravity="center"
+            android:text="@string/awaiter_accept"
+            android:textColor="@color/white"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/button_reject"
+            android:layout_width="54dp"
+            android:layout_height="26dp"
+            android:layout_marginEnd="40dp"
+            android:background="@drawable/frame_subscribe_button_not_selected"
+            android:fontFamily="@font/sf_pro_regular"
+            android:gravity="center"
+            android:text="@string/awaiter_reject"
+            android:textColor="@color/snuday_blue"
+            android:textSize="15dp" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/snuday_div_line"
+        android:layout_marginHorizontal="32dp" />
+
+</LinearLayout>

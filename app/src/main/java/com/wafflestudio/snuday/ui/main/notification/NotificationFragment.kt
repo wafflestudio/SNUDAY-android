@@ -48,7 +48,7 @@ class NotificationFragment : Fragment() {
 
         notificationAdapter = NotificationAdapter(
             onNoticeClickListener = { channelId, channelName, noticeId ->
-                val action = MainFragmentDirections.actionMainFragmentToNoticeDetailActivity(channelName, channelId, noticeId)
+                val action = MainFragmentDirections.actionMainFragmentToNoticeDetailFragment(channelName, channelId, noticeId)
                 findNavController().navigate(action)
             }
         )
@@ -125,7 +125,7 @@ class NotificationFragment : Fragment() {
                 val lastVisibleDataPosition = notificationLayoutManager.findLastCompletelyVisibleItemPosition()
 
                 if (lastVisibleDataPosition >= totalChannelData - 1) {
-                    if (!vm.checkLoadable()) {
+                    if (vm.checkLoadable()) {
                         vm.loadNextNotice().subIoObsMain()
                             .subscribe({},{Timber.e(it)})
                             .also { compositeDisposable.add(it) }
@@ -136,7 +136,11 @@ class NotificationFragment : Fragment() {
         })
 
         vm.fetchChannelData().subIoObsMain().subscribe({}, { Timber.d(it) }).also { compositeDisposable.add(it) }
-        vm.fetchNotice().subIoObsMain().subscribe({}, { Timber.d(it) }).also { compositeDisposable.add(it) }
+        if (!vm.alreadyCreated) {
+            vm.alreadyCreated = true
+            vm.fetchNotice().subIoObsMain().subscribe({}, { Timber.d(it) }).also { compositeDisposable.add(it) }
+        }
+
 
         vm.makeNoticeDataList().subIoObsMain().subscribe({ noticeDataList ->
             notificationAdapter.noticeList = noticeDataList

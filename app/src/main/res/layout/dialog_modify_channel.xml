@@ -1,0 +1,290 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="305dp"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="40dp"
+    android:background="@drawable/frame_snuday_dialog"
+    android:elevation="4dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_close_button"
+            android:visibility="invisible"
+            android:layout_marginStart="12dp"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/sf_pro_bold"
+            android:textColor="@color/black"
+            android:layout_weight="1"
+            android:textSize="18dp"
+            android:textAlignment="center"
+            android:text="@string/channel_modify" />
+
+        <ImageView
+            android:id="@+id/button_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_close_button"
+            android:layout_marginEnd="12dp"
+            android:layout_marginVertical="10dp" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/snuday_div_line" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="66dp"
+        android:layout_height="66dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginVertical="11dp">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:cardCornerRadius="33dp"
+            app:cardElevation="0dp">
+
+            <ImageView
+                android:background="@color/snuday_background_gray"
+                android:src="@drawable/ic_channel_image_sample_full"
+                android:id="@+id/image_channel"
+                android:scaleType="centerCrop"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+        </androidx.cardview.widget.CardView>
+
+        <ImageView
+            android:id="@+id/button_add_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_add_image"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical|end"
+        android:layout_marginHorizontal="28dp">
+
+        <ImageView
+            android:id="@+id/ic_private"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_private_lock_selector" />
+
+        <TextView
+            android:id="@+id/text_private"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/sf_pro_font_family"
+            android:textStyle="normal"
+            android:textColor="@color/black"
+            android:textSize="13dp"
+            android:layout_marginStart="5dp"
+            android:text="@string/channel_public_channel" />
+
+        <Switch
+            android:id="@+id/switch_private"
+            android:layout_width="wrap_content"
+            android:layout_height="18dp"
+            android:track="@drawable/frame_switch_track"
+            android:thumb="@drawable/frame_switch_thumb"
+            android:checked="true"
+            android:layout_marginStart="5dp" />
+
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/edit_text_title"
+        android:layout_width="match_parent"
+        android:layout_height="43dp"
+        android:background="@drawable/frame_edit_text"
+        android:fontFamily="@font/sf_pro_regular"
+        android:textSize="18dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/snuday_hint_text_gray"
+        android:hint="@string/channel_channel_name"
+        android:paddingHorizontal="17dp"
+        android:layout_marginHorizontal="28dp"
+        android:layout_marginTop="10dp"
+        />
+
+    <EditText
+        android:id="@+id/edit_text_channel_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="100dp"
+        android:background="@drawable/frame_edit_text"
+        android:layout_marginHorizontal="28dp"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/sf_pro_regular"
+        android:textColor="@color/black"
+        android:textSize="15dp"
+        android:textColorHint="@color/snuday_hint_text_gray"
+        android:hint="@string/channel_channel_description"
+        android:gravity="top"
+        android:maxLength="100"
+        android:inputType="textMultiLine"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="14dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/sf_pro_font_family"
+        android:textStyle="bold"
+        android:textSize="15dp"
+        android:textColor="@color/black"
+        android:text="@string/channel_manager_maintain"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="45dp" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp">
+
+        <LinearLayout
+            android:id="@+id/layout_add_manager"
+            android:layout_width="match_parent"
+            android:layout_height="29dp"
+            android:background="@drawable/frame_edit_text_gray"
+            android:layout_marginHorizontal="28dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:gravity="center_vertical">
+
+            <EditText
+                android:id="@+id/edit_text_manager"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/transparent"
+                android:paddingHorizontal="17dp"
+                android:textSize="15dp"
+                android:fontFamily="@font/sf_pro_regular"
+                android:maxLines="1"
+                android:maxLength="25"
+                android:textColorHint="@color/snuday_hint_text_gray"
+                android:hint="@string/channel_manager_search"
+                android:textColor="@color/black" />
+
+
+            <TextView
+                android:id="@+id/button_add_manager"
+                android:layout_width="52dp"
+                android:layout_height="23dp"
+                android:background="@drawable/frame_sign_up_check_ripple"
+                android:fontFamily="@font/sf_pro_regular"
+                android:textSize="13dp"
+                android:gravity="center"
+                android:textColor="@color/snuday_blue"
+                android:layout_marginEnd="4dp"
+                android:layout_marginStart="7dp"
+                android:clickable="true"
+                android:visibility="gone"
+                android:text="@string/channel_manager_add" />
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_manager"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginHorizontal="28dp"
+            android:paddingStart="15dp"
+            tools:listitem="@layout/item_manager"
+            app:layout_constraintTop_toBottomOf="@id/layout_add_manager"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:paddingTop="8dp"
+            android:paddingBottom="6dp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_manager_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxHeight="80dp"
+            tools:layout_height="80dp"
+            android:background="@drawable/frame_search_filter"
+            android:paddingHorizontal="15dp"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp"
+            android:clipToPadding="false"
+            android:elevation="4dp"
+            android:visibility="gone"
+            tools:visibility="visible"
+            tools:listitem="@layout/item_manager_search"
+            app:layout_constraintTop_toBottomOf="@id/layout_add_manager"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginHorizontal="28dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginHorizontal="28dp"
+        android:background="@color/snuday_div_line" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="25dp"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/button_delete"
+            android:layout_width="0dp"
+            android:layout_height="43dp"
+            android:layout_weight="1"
+            android:background="@drawable/frame_button_thick_white_ripple"
+            android:fontFamily="@font/sf_pro_bold"
+            android:textColor="@color/snuday_hint_text_gray"
+            android:textSize="18dp"
+            android:layout_marginEnd="5dp"
+            android:text="@string/channel_delete"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/button_modify"
+            android:layout_width="0dp"
+            android:layout_height="43dp"
+            android:layout_weight="1"
+            android:background="@drawable/frame_button_thick"
+            android:fontFamily="@font/sf_pro_bold"
+            android:textColor="@color/white"
+            android:textSize="18dp"
+            android:text="@string/channel_save"
+            android:gravity="center"/>
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

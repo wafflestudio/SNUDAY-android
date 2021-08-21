@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <View
+            android:id="@+id/icon_channel_color"
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            android:background="@drawable/frame_event_in_day_circle"
+            android:layout_marginTop="8dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginStart="13dp">
+
+            <TextView
+                android:id="@+id/text_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sf_pro_regular"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                tools:text="2021학년도 1학기 복적 및 재입학 신청"/>
+
+            <TextView
+                android:id="@+id/text_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sf_pro_regular"
+                android:textColor="@color/calendar_weekday_gray"
+                android:textSize="10dp"
+                tools:text="1월 11일 (월) ~ 1월 15일 (금)" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
